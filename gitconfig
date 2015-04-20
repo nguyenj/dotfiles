@@ -1,0 +1,16 @@
+[user]
+	email = hello@jnguyen.me
+	name = John Nguyen
+[push]
+	default = simple
+[core]
+	editor = vim
+	excludesfile = /Users/jnguyen/.gitignore
+[alias]
+  co = checkout
+  br = branch
+  st = status
+  ci = commit
+  plog = log --pretty=oneline
+[merge]
+	tool = vimdiff
