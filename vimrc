@@ -5,44 +5,14 @@ set encoding=utf-8
 filetype off
 
 
-" Set the runtime path to include Vundle and initalize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Alternatively, pass a path where Vundle should install pluings
-"call vundle#begin('~/some/path/here')
+if filereadable(expand("~/.dotfiles/vimrc.vundles"))
+  source ~/.dotfiles/vimrc.vundles
+endif
 
-" Let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 
-" A tree explorer plugin
-Plugin 'https://github.com/scrooloose/nerdtree.git'
-
-" Fuzzy file, buffer, mru, tag, etc finder
-Plugin 'https://github.com/kien/ctrlp.vim.git'
-
-" Highlights the enclosing html/xml tags
-Plugin 'https://github.com/Valloric/MatchTagAlways.git'
-
-" Emmet
-Plugin 'https://github.com/mattn/emmet-vim.git'
-
-" Syntax checking hacks
-Plugin 'https://github.com/scrooloose/syntastic.git'
-
-" Visually displaying indent levels in code
-Plugin 'https://github.com/Yggdroot/indentLine.git'
-
-" Precision colorscheme
-Plugin 'https://github.com/altercation/vim-colors-solarized.git'
-
-" All of your Plugins must be added before the following line
-" required
-call vundle#end()
-" required
 filetype plugin indent on
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-
 
 " For solarized plugin (color scheme)
 " https://github.com/altercation/vim-colors-solarized.git
