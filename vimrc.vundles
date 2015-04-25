@@ -29,7 +29,7 @@ Plugin 'https://github.com/Valloric/MatchTagAlways.git'
 Plugin 'https://github.com/mattn/emmet-vim.git'
 
 " Syntax checking hacks
-Plugin 'https://github.com/scrooloose/syntastic.git'
+"Plugin 'https://github.com/scrooloose/syntastic.git'
 
 " Visually displaying indent levels in code
 Plugin 'https://github.com/Yggdroot/indentLine.git'
