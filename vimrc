@@ -100,9 +100,10 @@ set expandtab
 set autoindent
 " Smart indent
 set smartindent
-" No line wrapping
-set nowrap
+" Wrap line, but do not break line
+set wrap
 set linebreak
+set nolist
 
 
 " Scroll before cursor reaches the edges
