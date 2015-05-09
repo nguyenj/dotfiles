@@ -19,23 +19,43 @@ Plugin 'gmarik/Vundle.vim'
 " A tree explorer plugin
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 
+" Enhanced tree explorer
+Plugin 'https://github.com/tpope/vim-vinegar.git'
+
 " Fuzzy file, buffer, mru, tag, etc finder
 Plugin 'https://github.com/kien/ctrlp.vim.git'
 
 " Highlights the enclosing html/xml tags
-Plugin 'https://github.com/Valloric/MatchTagAlways.git'
-
-" Emmet
+"Plugin 'https://github.com/Valloric/MatchTagAlways.git'
+" Surrounding the selector
+Plugin 'https://github.com/tpope/vim-surround.git'
+" Commenting
+Plugin 'https://github.com/tpope/vim-commentary.git'
+" Emmet - autocompletion
 Plugin 'https://github.com/mattn/emmet-vim.git'
-
-" Syntax checking hacks
-"Plugin 'https://github.com/scrooloose/syntastic.git'
 
 " Visually displaying indent levels in code
 Plugin 'https://github.com/Yggdroot/indentLine.git'
+"Plugin 'https://github.com/nathanaelkane/vim-indent-guides.git'
 
+" Awesome status bar
+Plugin 'https://github.com/bling/vim-airline.git'
 " Precision colorscheme
 Plugin 'https://github.com/altercation/vim-colors-solarized.git'
+" GIT Gutter
+Plugin 'https://github.com/airblade/vim-gitgutter.git'
+" GIT status
+Plugin 'https://github.com/tpope/vim-fugitive.git'
+
+" Haml, Sass, and Scss
+"Plugin 'https://github.com/tpope/vim-haml.git'
+
+" Syntax checking hacks
+Plugin 'https://github.com/scrooloose/syntastic.git'
+" HTML5 syntax
+Plugin 'https://github.com/othree/html5.vim.git'
+" SASS syntax
+Plugin 'https://github.com/cakebaker/scss-syntax.vim.git'
 
 " All of your Plugins must be added before the following line
 " required
