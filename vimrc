@@ -78,6 +78,25 @@ nnoremap <leader><space> :nohlsearch<CR>
 set showmatch
 
 
+" Auto indent
+set autoindent
+set copyindent
+set cindent
+" Smart indent
+set smartindent
+set smarttab
+" Softtabs, 2 spaces
+"set tabstop=2
+"set shiftwidth=2
+"set softtabstop=2
+"set shiftround
+"set expandtab
+" Wrap line, but do not break line
+set wrap
+set linebreak
+set nolist
+
+
 " Shows row and column number
 set ruler
 " Vim to display file changes immediately
@@ -88,22 +107,6 @@ set list
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:>,precedes:<
 " Rule at 80 characters
 set colorcolumn=81
-
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set shiftround
-set expandtab
-" Auto indent
-set autoindent
-" Smart indent
-set smartindent
-" Wrap line, but do not break line
-set wrap
-set linebreak
-set nolist
 
 
 " Scroll before cursor reaches the edges
@@ -120,14 +123,14 @@ set foldlevelstart=10
 " space to open/close folds
 nnoremap <space> za
 " fold base on syntax
-set foldmethod=manual
+set foldmethod=syntax
 
 
 " Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-l> <C-w>l
 
 
 " Avoid the esc key
@@ -144,15 +147,15 @@ map  <right> <nop>
 imap <right> <nop>
 
 
-" Syntastic configurations
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+" Indent Plugin configuration
+let g:indentLine_leadingSpaceEnabled=1
+let g:indentLine_leadingSpaceChar='·'
 
-
+" Airline plugin configuration
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 
