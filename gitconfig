@@ -11,6 +11,6 @@
   br = branch
   st = status
   ci = commit
-  plog = log --pretty=oneline
+  plog = log --graph --decorate --oneline
 [merge]
 	tool = vimdiff
