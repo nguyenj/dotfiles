@@ -57,6 +57,8 @@ Plugin 'https://github.com/cakebaker/scss-syntax.vim.git'
 Plugin 'https://github.com/pangloss/vim-javascript.git'
 " YAML syntax
 Plugin 'https://github.com/chase/vim-ansible-yaml.git'
+" Liquid syntax - Jekyll
+Plugin 'https://github.com/tpope/vim-liquid.git'
 
 
 " All of your Plugins must be added before the following line
