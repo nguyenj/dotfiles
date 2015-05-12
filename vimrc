@@ -86,11 +86,11 @@ set cindent
 set smartindent
 set smarttab
 " Softtabs, 2 spaces
-"set tabstop=2
-"set shiftwidth=2
-"set softtabstop=2
-"set shiftround
-"set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set shiftround
+set expandtab
 " Wrap line, but do not break line
 set wrap
 set linebreak
@@ -147,6 +147,9 @@ map  <right> <nop>
 imap <right> <nop>
 
 
+" crtl+p Plugin configuration
+let g:ctrlp_show_hidden=1
+
 " Indent Plugin configuration
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar='·'
@@ -157,5 +160,26 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+
+" Syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" scss-lint for syntastic
+let g:syntastic_scss_checkers = ['scss_lint']
+
+
+" json syntax support
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" markdown syntax support
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+
+
 
 
