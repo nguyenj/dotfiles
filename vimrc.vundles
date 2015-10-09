@@ -3,68 +3,19 @@ if &compatible
   set nocompatible
 end
 
-
 filetype off
 
-
-" Set the runtime path to include Vundle and initalize
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" Alternatively, pass a path where Vundle should install pluings
-"call vundle#begin('~/some/path/here')
-
-" Let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" A tree explorer plugin
-Plugin 'https://github.com/scrooloose/nerdtree.git'
-
-" Enhanced tree explorer
-Plugin 'https://github.com/tpope/vim-vinegar.git'
-
-" Fuzzy file, buffer, mru, tag, etc finder
-Plugin 'https://github.com/kien/ctrlp.vim.git'
-
-" Highlights the enclosing html/xml tags
-"Plugin 'https://github.com/Valloric/MatchTagAlways.git'
-" Surrounding the selector
-Plugin 'https://github.com/tpope/vim-surround.git'
-" Commenting
-Plugin 'https://github.com/tpope/vim-commentary.git'
-" Emmet - autocompletion
-Plugin 'https://github.com/mattn/emmet-vim.git'
-
-" Visually displaying indent levels in code
-Plugin 'https://github.com/Yggdroot/indentLine.git'
-"Plugin 'https://github.com/nathanaelkane/vim-indent-guides.git'
-
-" Awesome status bar
-Plugin 'https://github.com/bling/vim-airline.git'
-" Precision colorscheme
-Plugin 'https://github.com/altercation/vim-colors-solarized.git'
-" GIT Gutter
-Plugin 'https://github.com/airblade/vim-gitgutter.git'
-" GIT status
-Plugin 'https://github.com/tpope/vim-fugitive.git'
-
-" Syntax checking hacks
-Plugin 'https://github.com/scrooloose/syntastic.git'
-" HTML5 syntax
-Plugin 'https://github.com/othree/html5.vim.git'
-" SASS syntax
-Plugin 'https://github.com/cakebaker/scss-syntax.vim.git'
-" JavaScript syntax
-Plugin 'https://github.com/pangloss/vim-javascript.git'
-" YAML syntax
-Plugin 'https://github.com/chase/vim-ansible-yaml.git'
-" Liquid syntax - Jekyll
-Plugin 'https://github.com/tpope/vim-liquid.git'
-
-
-" All of your Plugins must be added before the following line
-" required
-call vundle#end()
-" required
-
+  Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
+  Plugin 'kien/ctrlp.vim'           " fuzzy finder
+  Plugin 'ag.vim'                   " silver searcher for vim
+  Plugin 'tpope/vim-fugitive'       " git wrapper
+  Plugin 'airblade/vim-gitgutter'   " git diff stuff in the gutter
+  Plugin 'mattn/emmet-vim'          " emmet
+  Plugin 'chriskempson/base16-vim'  " base 16 colors
+  Plugin 'bling/vim-airline'        " lightweight status bar customization
+call vundle#end()                   " required
 
 filetype on
