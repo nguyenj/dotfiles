@@ -29,7 +29,15 @@ set tf                              " more characters sent to the screen to for 
 
 set title                           " set the title to the value of 'titlestring'
 set wim=list:longest,full           " completion mode
-set wmnu                            " enhanced cmd line complettion
+set wmnu                            " enhanced cmd line complettion, wildmenu
+
+set nohls                           " remove highlight on matching search term
+set is                              " search while typing
+set hls                             " highlight match
+set ic                              " ignore case while searching
+set scs                             " overrides ignore case if has uppercase
+" spacebar to turn off term highlighting
+nnoremap <leader><space> :nohlsearch<CR>
 
 set et                              " use spaces instead of tabs
 set ts=2                            " spaces per tab
