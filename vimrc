@@ -14,6 +14,13 @@ let g:airline_section_z='%p%%:%c:%l'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
+" Plugin ctrlp
+let g:ctrlp_custom_ignore={
+  \ 'dir': '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links'
+  \ }
+
 set bg=dark                         " set background theme to be dark
 colorscheme base16-eighties         " set colorscheme using the base-16 plugin
 set ar                              " display file changes immediately
