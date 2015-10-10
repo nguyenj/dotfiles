@@ -10,6 +10,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
   Plugin 'kien/ctrlp.vim'           " fuzzy finder
+  Plugin 'scrooloose/nerdtree'      " nerdtree
   Plugin 'ag.vim'                   " silver searcher for vim
   Plugin 'tpope/vim-fugitive'       " git wrapper
   Plugin 'airblade/vim-gitgutter'   " git diff stuff in the gutter
