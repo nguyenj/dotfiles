@@ -1,16 +1,14 @@
 [user]
-	email = hello@jnguyen.me
-	name = John Nguyen
+  name = John Nguyen
+  email = hello@jnguyen.me
 [push]
-	default = simple
-[core]
-	editor = vim
-	excludesfile = /Users/jnguyen/.gitignore
+  default = simple
 [alias]
   co = checkout
   br = branch
-  st = status
   ci = commit
-  plog = log --graph --decorate --oneline
-[merge]
-	tool = vimdiff
+  ca = commit --amend
+  st = status
+  unstage = reset HEAD --
+[core]
+  excludesfile = ~/.gitignore
