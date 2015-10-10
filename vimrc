@@ -22,7 +22,9 @@ let g:ctrlp_custom_ignore={
   \ }
 
 set bg=dark                         " set background theme to be dark
-colorscheme base16-eighties         " set colorscheme using the base-16 plugin
+if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
+  colorscheme base16-eighties       " set colorscheme using the base-16 plugin
+endif
 set ar                              " display file changes immediately
 set lz                              " disable redraw during actions, :redraw to update
 set tf                              " more characters sent to the screen to for smoother redraws
