@@ -16,10 +16,11 @@ let g:airline_right_sep=''
 
 " Plugin ctrlp
 let g:ctrlp_custom_ignore={
-  \ 'dir': '\v[\/]\.(git|hg|svn)$',
+  \ 'dir': '\v[\/]\.(git|hg|svn|sass-cache)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links'
   \ }
+let g:ctrlp_show_hidden = 1
 
 set bg=dark                         " set background theme to be dark
 if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
