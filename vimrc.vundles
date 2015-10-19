@@ -17,6 +17,8 @@ call vundle#begin()
   Plugin 'mattn/emmet-vim'          " emmet
   Plugin 'chriskempson/base16-vim'  " base 16 colors
   Plugin 'bling/vim-airline'        " lightweight status bar customization
+  Plugin 'wavded/vim-stylus'        " stylus syntax
+  Plugin 'kchmck/vim-coffee-script' " coffeescript syntax
 call vundle#end()                   " required
 
 filetype on
