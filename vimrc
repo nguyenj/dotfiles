@@ -61,7 +61,7 @@ set list                            " show spaces and tabs
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:>,precedes:<   " strings represented in 'list'
 
 set ruler                           " show line and column number on the status bar
-set colorcolumn=81,101,121          " indicate where lines 81 is located
+set colorcolumn=50,72               " indicate column lines for text wrap
 set wrap                            " wrap line when lines are longer than the window width
 set lbr                             " visually show the line break
 
