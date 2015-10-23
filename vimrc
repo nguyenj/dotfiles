@@ -11,6 +11,7 @@ filetype plugin indent on           " required
 syntax on                           " required for syntax highlighting
 
 " Plugin Airline settings
+" TODO: need to find a better format
 let g:airline_section_z='%p%%:%c:%l'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -72,3 +73,4 @@ set cul                             " highlight cursor line
 
 " map jj to escape an action
 imap jj <Esc>
+
