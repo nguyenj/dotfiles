@@ -8,6 +8,7 @@ if filereadable(expand("~/.dotfiles/vimrc.vundles"))
 endif
 
 filetype plugin indent on           " required
+syntax on                           " required for syntax highlighting
 
 " Plugin Airline settings
 let g:airline_section_z='%p%%:%c:%l'
