@@ -32,7 +32,7 @@ set lz                              " disable redraw during actions, :redraw to 
 set tf                              " more characters sent to the screen to for smoother redraws
 
 set title                           " set the title to the value of 'titlestring'
-set wim=list:longest,full           " completion mode
+set wim=list:full           " completion mode
 set wmnu                            " enhanced cmd line complettion, wildmenu
 
 set nohls                           " remove highlight on matching search term
