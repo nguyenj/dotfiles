@@ -1,5 +1,8 @@
 dotfiles="$HOME/.dotfiles"
 
+# setup tmux
+ln -s $dotfiles/tmux ~/.tmux.conf
+
 # setup vim config
 mkdir -pv $dotfiles/vim/bundle
 ln -s $dotfiles/vim ~/.vim
