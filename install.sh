@@ -15,3 +15,4 @@ vim +PluginInstall +PluginClean! +qall
 # setup git config
 ln -s $dotfiles/gitconfig ~/.gitconfig
 ln -s $dotfiles/gitignore ~/.gitignore
+ln -s $dotfiles/git-prompt-colors ~/.git-prompt-colors.sh
