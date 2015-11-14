@@ -11,10 +11,9 @@
   st = status
   unstage = reset HEAD --
 [core]
+  editor = vim
   excludesfile = ~/.gitignore
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [merge]
-	tool = vimdiff
-[difftool]
-	prompt = false
+  tool = vimdiff
