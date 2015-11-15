@@ -43,6 +43,7 @@ set ic                              " ignore case while searching
 set scs                             " overrides ignore case if has uppercase
 " spacebar to turn off term highlighting
 nnoremap <leader><space> :nohlsearch<CR>
+set backspace=indent,eol,start      " allow backspacing over everything
 
 set et                              " use spaces instead of tabs
 set ts=2                            " spaces per tab
