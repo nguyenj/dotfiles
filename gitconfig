@@ -9,11 +9,15 @@
   ci = commit
   ca = commit --amend
   st = status
+  dt = difftool
   unstage = reset HEAD --
+  lo = log --pretty=short --stat --graph
 [core]
   editor = vim
   excludesfile = ~/.gitignore
-[diff]
-  tool = vimdiff
 [merge]
   tool = vimdiff
+[difftool]
+  external = ~/.git_diff_wrapper.sh¬
+  tool = vimdiff¬
+  prompt = false¬

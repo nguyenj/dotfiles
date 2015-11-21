@@ -16,3 +16,4 @@ vim +PluginInstall +PluginClean! +qall
 ln -s $dotfiles/gitconfig ~/.gitconfig
 ln -s $dotfiles/gitignore ~/.gitignore
 ln -s $dotfiles/git-prompt-colors ~/.git-prompt-colors.sh
+ln -s $dotfiles/git_diff_wrapper.sh ~/.git_diff_wrapper.sh
