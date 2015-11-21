@@ -19,6 +19,7 @@ call vundle#begin()
   Plugin 'chriskempson/base16-vim'  " base 16 colors
   Plugin 'bling/vim-airline'        " lightweight status bar customization
   Plugin 'wavded/vim-stylus'        " stylus syntax
+  Plugin 'stephpy/vim-yaml'         " yaml syntax
   Plugin 'kchmck/vim-coffee-script' " coffeescript syntax
 call vundle#end()                   " required
 
