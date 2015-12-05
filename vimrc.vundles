@@ -20,6 +20,7 @@ call vundle#begin()
   Plugin 'godlygeek/tabular'        " alignments
   Plugin 'chriskempson/base16-vim'  " base 16 colors
   Plugin 'bling/vim-airline'        " lightweight status bar customization
+  Plugin 'scrooloose/syntastic'     " syntax checking
   Plugin 'wavded/vim-stylus'        " stylus syntax
   Plugin 'stephpy/vim-yaml'         " yaml syntax
   Plugin 'kchmck/vim-coffee-script' " coffeescript syntax
