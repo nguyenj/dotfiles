@@ -5,8 +5,12 @@ ln -s $dotfiles/tmux ~/.tmux.conf
 
 # setup vim config
 mkdir -pv $dotfiles/vim/bundle
-ln -s $dotfiles/vim ~/.vim
-ln -s $dotfiles/vimrc ~/.vimrc
+if [ ! -d ~/.vim ]; then
+  ln -s $dotfiles/vim ~/.vim
+fi
+if [ ! -e ~/.vimrc ]; then
+  ln -s $dotfiles/vimrc ~/.vimrc
+fi
 if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
   git clone git@github.com:gmarik/Vundle.vim.git $dotfiles/vim/bundle/Vundle.vim
 fi

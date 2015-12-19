@@ -20,12 +20,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['standard']
 
-" Plugin Airline settings
-" TODO: need to find a better format
-let g:airline_section_z='%p%%:%c:%l'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
 " Plugin ctrlp
 let g:ctrlp_custom_ignore={
   \ 'dir': '\v[\/]\.(git|hg|svn|sass-cache)$',
@@ -33,55 +27,84 @@ let g:ctrlp_custom_ignore={
   \ 'link': 'some_bad_symbolic_links'
   \ }
 let g:ctrlp_show_hidden = 1
+" Make CtrlP use ag for listing the files. Way faster and no useless files.
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
+
+" Map the leader to spacebar rather than \
+let mapleader = "\<Space>"
+" open up vimrc
+nmap <leader>vr :tabedit $MYVIMRC<cr>
+" reload vimrc
+nmap <leader>so :source $MYVIMRC<cr>
+" Pre-populate a split command with the current directory
+nmap <leader>n :tabnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
+" Map 0 to ^
+nmap 0 ^
+" Move up and down by visible lines if current line is wrapped
+nmap j gj
+"nmap k g
+" Exit Insert mode
+imap jk <esc>
+imap kj <esc>
+imap jj <esc>
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Bind `q` to close the buffer for help files
+autocmd Filetype help nnoremap <buffer> q :q<cr>
 
 set bg=dark                         " set background theme to be dark
 if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
   colorscheme base16-eighties       " set colorscheme using the base-16 plugin
 endif
-set ar                              " display file changes immediately
-set lz                              " disable redraw during actions, :redraw to update
-set tf                              " more characters sent to the screen to for smoother redraws
-
-set title                           " set the title to the value of 'titlestring'
-set wim=list:full           " completion mode
-set wmnu                            " enhanced cmd line complettion, wildmenu
-
-set nohls                           " remove highlight on matching search term
-set is                              " search while typing
-set hls                             " highlight match
-set ic                              " ignore case while searching
-set scs                             " overrides ignore case if has uppercase
-" spacebar to turn off term highlighting
-nnoremap <leader><space> :nohlsearch<CR>
-set backspace=indent,eol,start      " allow backspacing over everything
-
-set et                              " use spaces instead of tabs
-set ts=2                            " spaces per tab
-set sw=2                            " indentation space
-set sts=2                           " number of spaces per tab while editing
-set sr                              " round to the nearest multiple of 'shiftwidth'
-
-set ai                              " copy current line's indent to the new line
-set ci                              " copy the existing indenting structure
-set si                              " smart indenting on a new line
-set sta                             " only indent if the line is not empty
-
+set lazyredraw                      " disable redraw during actions
+set autoread                        " display file changes immediately
+set ttyfast                         " more characters sent to the screen to for smoother redraws
+set relativenumber
 set number                          " enable line number
-set guifont=Monaco:h14              " set the font type and size
-set visualbell                      " Set visual bell instad of a 'BEEP'
-set noerrorbells                    " Turn off the bell
+set numberwidth=5
+set cursorline                      " highlight cursor line
+set backspace=indent,eol,start      " allow backspacing over everything
+set history=500
+set scrolloff=10                    " keep at least 10 lines below the cursor
 set list                            " show spaces and tabs
-set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:>,precedes:<   " strings represented in 'list'
-
-set ruler                           " show line and column number on the status bar
+set listchars=tab:»·,trail:·,nbsp:· " string represented in `list`
 set colorcolumn=50,72               " indicate column lines for text wrap
 set wrap                            " wrap line when lines are longer than the window width
-set lbr                             " visually show the line break
+set splitright                      " open new split panes to right
+set guifont=Monaco:h18              " set the font type and size
+set visualbell                      " Set visual bell instad of a 'BEEP'
+set noerrorbells                    " Turn off the bell
+set wildmenu
 
-set ls=2                            " always show line status
-set smd                             " show current mode
-set cul                             " highlight cursor line
+" Use softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+set autoindent
+set copyindent
 
-" map jj to escape an action
-imap jj <Esc>
+" Highlight matching search term
+set nohlsearch
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+" spacebar to turn off term highlighting
+nnoremap <leader><Space> :nohlsearch<cr>
 
+" Toggle line numbers from static to relative
+function! LineNumberToggle()
+  if (&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <c-n> :call LineNumberToggle()<cr>
