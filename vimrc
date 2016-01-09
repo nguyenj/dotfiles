@@ -32,6 +32,7 @@ let g:ctrlp_use_caching = 0
 
 " Map the leader to spacebar rather than \
 let mapleader = "\<Space>"
+
 " open up vimrc
 nmap <leader>vr :tabedit $MYVIMRC<cr>
 " reload vimrc
@@ -45,8 +46,10 @@ nmap j gj
 "nmap k g
 " Exit Insert mode
 imap jk <esc>
-imap kj <esc>
 imap jj <esc>
+
+" Paste without VIM auto formatting
+map <leader>p :set paste<cr>o<esc>"*]p:set nopaste<cr>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -54,19 +57,27 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 
 set bg=dark                         " set background theme to be dark
 if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
-  colorscheme base16-eighties       " set colorscheme using the base-16 plugin
+  colorscheme base16-flat           " set colorscheme using the base-16 plugin
 endif
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
+set title                           " set the title to the value of 'titlestring'
+set showmode                        " shows the current mode
+set showtabline=2                   " always show tabline
+set laststatus=2                    " always show status line
+set statusline=%<%f\ -\ %y%h%m%r%=%{strftime(\"%k:%M\ %d\ %a\")}\ %P " tail of the filename
 set relativenumber
 set number                          " enable line number
-set numberwidth=5
+" set numberwidth=5
 set cursorline                      " highlight cursor line
 set backspace=indent,eol,start      " allow backspacing over everything
 set history=500
@@ -96,7 +107,7 @@ set hlsearch
 set ignorecase
 set smartcase
 " spacebar to turn off term highlighting
-nnoremap <leader><Space> :nohlsearch<cr>
+nnoremap <leader>h :nohlsearch<cr>
 
 " Toggle line numbers from static to relative
 function! LineNumberToggle()
