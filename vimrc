@@ -19,6 +19,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_mode_map = {
+  \ "passive_filetypes": ["html"] }
 
 " Plugin ctrlp
 let g:ctrlp_custom_ignore={
