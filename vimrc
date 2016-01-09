@@ -24,13 +24,10 @@ let g:syntastic_mode_map = {
 
 " Plugin ctrlp
 let g:ctrlp_custom_ignore={
-  \ 'dir': '\v[\/]\.(git|hg|svn|sass-cache)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links'
+  \ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
+  \ 'file': '\v\.(exe|so|dll|zip|swp|so|DS_Store)$'
   \ }
 let g:ctrlp_show_hidden = 1
-" Make CtrlP use ag for listing the files. Way faster and no useless files.
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 
 " Map the leader to spacebar rather than \
