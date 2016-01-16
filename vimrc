@@ -63,6 +63,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 
+set clipboard=unnamed               " OSX clipboard
 set bg=dark                         " set background theme to be dark
 if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
   colorscheme base16-flat           " set colorscheme using the base-16 plugin
