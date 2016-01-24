@@ -86,7 +86,7 @@ set laststatus=2                    " always show status line
 set statusline=%<%f\ -\ %y%h%m%r%=%{strftime(\"%k:%M\ %d\ %a\")}\ %P " tail of the filename
 set relativenumber
 set number                          " enable line number
-" set numberwidth=5
+set numberwidth=5
 set cursorline                      " highlight cursor line
 set backspace=indent,eol,start      " allow backspacing over everything
 set history=500
