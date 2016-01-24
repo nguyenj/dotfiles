@@ -71,10 +71,10 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 
 set clipboard=unnamed               " OSX clipboard
-set bg=dark                         " set background theme to be dark
-if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
-  colorscheme base16-flat           " set colorscheme using the base-16 plugin
-endif
+" set bg=dark                         " set background theme to be dark
+" if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
+"   colorscheme base16-flat           " set colorscheme using the base-16 plugin
+" endif
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
