@@ -22,6 +22,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_mode_map = {
   \ "passive_filetypes": ["html"] }
+let g:syntastic_scss_sass_quiet_messages = {
+  \ "regex": 'File to import not found or unreadable' }
 
 " Plugin ctrlp
 let g:ctrlp_custom_ignore={
