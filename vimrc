@@ -77,6 +77,7 @@ set ttyfast                         " more characters sent to the screen to for 
 set title                           " set the title to the value of 'titlestring'
 set showmode                        " shows the current mode
 set showtabline=2                   " always show tabline
+set showcmd                         " show the current command
 set laststatus=2                    " always show status line
 set statusline=%<%f\ -\ %y%h%m%r%=%{strftime(\"%k:%M\ %d\ %a\")}\ %P " tail of the filename
 set relativenumber
