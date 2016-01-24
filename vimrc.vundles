@@ -12,6 +12,7 @@ call vundle#begin()
   Plugin 'kien/ctrlp.vim'           " fuzzy finder
   Plugin 'ag.vim'                   " silver searcher for vim
   Plugin 'tpope/vim-fugitive'       " git wrapper
+  Plugin 'airblade/vim-gitgutter'   " gitgutter
   Plugin 'Yggdroot/indentLine'      " show indentation level
   Plugin 'mattn/emmet-vim'          " emmet
   Plugin 'scrooloose/syntastic'     " syntax checking/linting
