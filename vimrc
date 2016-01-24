@@ -112,6 +112,7 @@ set autoindent
 set copyindent
 
 " Highlight matching search term
+set lisp                              " `-` is included in the keyword characters
 set nohlsearch
 set incsearch
 set hlsearch
