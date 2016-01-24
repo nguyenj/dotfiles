@@ -8,6 +8,7 @@ if filereadable(expand("~/.dotfiles/vimrc.vundles"))
 endif
 
 filetype plugin indent on           " required
+runtime macros/matchit.vim          " activate matchit
 syntax on                           " required for syntax highlighting
 
 " Plugin syntastic
