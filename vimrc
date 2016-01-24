@@ -62,6 +62,7 @@ nnoremap <C-l> <C-w>l
 
 set noswapfile                        " Don't create swap file
 set nobackup                          " Don't create backup files
+set clipboard=unnamed
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
