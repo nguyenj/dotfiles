@@ -46,7 +46,7 @@ nmap <leader>n :tabnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
 nmap 0 ^
 " Move up and down by visible lines if current line is wrapped
 nmap j gj
-nmap k g
+" nmap k g
 " Exit Insert mode
 imap jk <esc>
 imap jj <esc>
