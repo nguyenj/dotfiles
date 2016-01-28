@@ -13,11 +13,11 @@ bind-key \ split-window -h -c "#{pane_current_path}"
 bind-key c new-window -c "#{pane_current_path}"
 
 # gray out the statusbar
-set-option -g status-bg "#666666"
-set-option -g status-fg "#aaaaaa"
+# set-option -g status-bg "#666666"
+# set-option -g status-fg "#aaaaaa"
 
 # custom statusbar info on the right
-set-option -g status-right " #(battery -t -p -a) #(date '+%a, %b %d - %I:%M') "
+set-option -g status-right " #(battery -t -p -a) #(date '+%a, %b %d - %H:%M') "
 
 # # Vim style pane selection
 # bind h select-pane -L
