@@ -71,10 +71,11 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 
 set clipboard=unnamed               " OSX clipboard
-" set bg=dark                         " set background theme to be dark
-" if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
-"   colorscheme base16-flat           " set colorscheme using the base-16 plugin
-" endif
+set bg=light                         " set background theme to be dark
+if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
+  let base16colorspace=256          " Access colors present in 256 colorspace
+  colorscheme base16-solarized      " set colorscheme using the base-16 plugin
+endif
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
@@ -94,7 +95,7 @@ set scrolloff=10                    " keep at least 10 lines below the cursor
 set list                            " show spaces and tabs
 set listchars=tab:»·,trail:·,nbsp:· " string represented in `list`
 set colorcolumn=50,72               " indicate column lines for text wrap
-hi ColorColumn ctermbg=darkgrey guibg=darkgrey
+" hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 set wrap                            " wrap line when lines are longer than the window width
 set splitright                      " open new vertical split panes to right
 set splitbelow                      " open new split panes to the bottom

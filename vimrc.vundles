@@ -8,18 +8,19 @@ filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-  Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
-  Plugin 'kien/ctrlp.vim'           " fuzzy finder
-  Plugin 'ag.vim'                   " silver searcher for vim
-  Plugin 'tpope/vim-fugitive'       " git wrapper
-  Plugin 'airblade/vim-gitgutter'   " gitgutter
-  Plugin 'Yggdroot/indentLine'      " show indentation level
-  Plugin 'mattn/emmet-vim'          " emmet
-  Plugin 'scrooloose/syntastic'     " syntax checking/linting
-  Plugin 'wavded/vim-stylus'        " stylus syntax
-  Plugin 'stephpy/vim-yaml'         " yaml syntax
-  Plugin 'kchmck/vim-coffee-script' " coffeescript syntax
-  Plugin 'chriskempson/base16-vim'  " base 16 colors
-call vundle#end()                   " required
+  Plugin 'VundleVim/Vundle.vim'      " let Vundle manage Vundle, required
+  Plugin 'kien/ctrlp.vim'            " fuzzy finder
+  Plugin 'ag.vim'                    " silver searcher for vim
+  Plugin 'tpope/vim-fugitive'        " git wrapper
+  Plugin 'airblade/vim-gitgutter'    " gitgutter
+  Plugin 'Yggdroot/indentLine'       " show indentation level
+  Plugin 'mattn/emmet-vim'           " emmet
+  Plugin 'scrooloose/syntastic'      " syntax checking/linting
+  Plugin 'wavded/vim-stylus'         " stylus syntax
+  Plugin 'stephpy/vim-yaml'          " yaml syntax
+  Plugin 'kchmck/vim-coffee-script'  " coffeescript syntax
+  Plugin 'chriskempson/base16-vim'   " base 16 colors
+  Plugin 'chriskempson/base16-shell' " base 16 for shell
+call vundle#end()                    " required
 
 filetype on

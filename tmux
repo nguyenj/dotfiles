@@ -3,7 +3,7 @@ set-option -g mode-keys vi
 bind-key C-r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
 # set default tmux display in 256 colors
-set -g default-terminal "screen-256color"
+set-option -g default-terminal "screen-256color"
 
 # better pane splitting
 bind-key - split-window -v -c "#{pane_current_path}"
