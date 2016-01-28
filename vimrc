@@ -84,8 +84,9 @@ set showmode                        " shows the current mode
 set showtabline=2                   " always show tabline
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
-set statusline=%<%f\ -\ %y%h%m%r%=%{strftime(\"%k:%M\ %d\ %a\")}\ %P " tail of the filename
-set relativenumber
+" set statusline=%<%f\ -\ %y%h%m%r%=%{strftime(\"%k:%M\ %d\ %a\")}\ %P " tail of the filename
+set statusline=%<%f\ -\ %y%h%m%r%=%{fugitive#statusline()} " tail of the filename
+set relativenumber                  " relative line number to cursor
 set number                          " enable line number
 set numberwidth=5
 set cursorline                      " highlight cursor line
