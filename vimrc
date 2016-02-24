@@ -64,9 +64,6 @@ set noswapfile                        " Don't create swap file
 set nobackup                          " Don't create backup files
 set clipboard=unnamed
 
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 
@@ -122,6 +119,15 @@ set ignorecase
 set smartcase
 " spacebar to turn off term highlighting
 nnoremap <leader>h :nohlsearch<cr>
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " bind K to grep word under cursor
+  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+endif
 
 " Toggle line numbers from static to relative
 function! LineNumberToggle()
