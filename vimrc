@@ -68,7 +68,7 @@ set clipboard=unnamed
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 
 set clipboard=unnamed               " OSX clipboard
-set bg=light                         " set background theme to be dark
+set bg=dark                         " set background theme to be dark
 if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
   let base16colorspace=256          " Access colors present in 256 colorspace
   colorscheme base16-solarized      " set colorscheme using the base-16 plugin
@@ -138,3 +138,12 @@ function! LineNumberToggle()
   endif
 endfunc
 nnoremap <c-n> :call LineNumberToggle()<cr>
+
+function! BgToggle()
+  if (&bg == "dark")
+    set bg=light
+  else
+    set bg=dark
+  endif
+endfunc
+nnoremap <F5> :call BgToggle()<cr>
