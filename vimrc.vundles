@@ -16,6 +16,7 @@ call vundle#begin()
   Plugin 'Yggdroot/indentLine'       " show indentation level
   Plugin 'mattn/emmet-vim'           " emmet
   Plugin 'scrooloose/syntastic'      " syntax checking/linting
+  Plugin 'scrooloose/nerdcommenter'  " simple commenting
   Plugin 'wavded/vim-stylus'         " stylus syntax
   Plugin 'stephpy/vim-yaml'          " yaml syntax
   Plugin 'kchmck/vim-coffee-script'  " coffeescript syntax
