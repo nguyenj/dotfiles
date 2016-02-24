@@ -25,3 +25,5 @@ set-option -g status-right " #(battery -t -p -a) #(date '+%a, %b %d - %H:%M') "
 # bind j select-pane -D
 # bind k select-pane -U
 # bind l select-pane -R
+#
+bind-key t split-window -h "vim ~/TODO.md"
