@@ -15,6 +15,9 @@ bind-key c new-window -c "#{pane_current_path}"
 set -g base-index 1
 set -g renumber-windows on
 
+# break pane into new window
+bind-key b break-pane -d
+
 # gray out the statusbar
 # set-option -g status-bg "#666666"
 # set-option -g status-fg "#aaaaaa"
