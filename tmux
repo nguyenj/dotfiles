@@ -12,6 +12,8 @@ bind-key \ split-window -h -c "#{pane_current_path}"
 
 # better window creation
 bind-key c new-window -c "#{pane_current_path}"
+set -g base-index 1
+set -g renumber-windows on
 
 # gray out the statusbar
 # set-option -g status-bg "#666666"
