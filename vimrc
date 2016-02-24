@@ -128,6 +128,9 @@ if executable('ag')
 
   " bind K to grep word under cursor
   nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+  " bind \ to :Ag!
+  nnoremap \ :Ag!<space>
 endif
 
 " Toggle line numbers from static to relative
