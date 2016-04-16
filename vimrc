@@ -7,31 +7,19 @@ if filereadable(expand("~/.dotfiles/vimrc.vundles"))
   source ~/.dotfiles/vimrc.vundles
 endif
 
+syntax on                           " required for syntax highlighting
 filetype plugin indent on           " required
 runtime macros/matchit.vim          " activate matchit
-syntax on                           " required for syntax highlighting
-
-" Plugin syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['standard']
-let g:syntastic_mode_map = {
-  \ "passive_filetypes": ["html"] }
-let g:syntastic_scss_sass_quiet_messages = {
-  \ "regex": 'File to import not found or unreadable' }
 
 " Plugin ctrlp
 let g:ctrlp_custom_ignore={
   \ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
   \ 'file': '\v\.(exe|so|dll|zip|swp|so|DS_Store)$'
   \ }
-let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 0
+
+" Plugin indentLine
+let g:indentLine_color_term = 8
 
 " Map the leader to spacebar rather than \
 let mapleader = "\<Space>"
@@ -51,9 +39,6 @@ nmap j gj
 imap jk <esc>
 imap jj <esc>
 
-" Paste without VIM auto formatting
-map <leader>p :set paste<cr>o<esc>"*]p:set nopaste<cr>
-
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -62,17 +47,17 @@ nnoremap <C-l> <C-w>l
 
 set noswapfile                        " Don't create swap file
 set nobackup                          " Don't create backup files
-set clipboard=unnamed
 
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<cr>
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 
-set clipboard=unnamed               " OSX clipboard
-set bg=dark                         " set background theme to be dark
-if isdirectory(expand("~/.dotfiles/vim/bundle/base16-vim"))
-  let base16colorspace=256          " Access colors present in 256 colorspace
-  colorscheme base16-solarized      " set colorscheme using the base-16 plugin
-endif
+set bg=light                         " set background theme to be dark
+colorscheme solarized
+"if isdirectory(expand("~/.dotfiles/vim/bundle/Spacegray.vim"))
+  "colorscheme spacegray
+"endif
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
@@ -81,11 +66,8 @@ set showmode                        " shows the current mode
 set showtabline=2                   " always show tabline
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
-" set statusline=%<%f\ -\ %y%h%m%r%=%{strftime(\"%k:%M\ %d\ %a\")}\ %P " tail of the filename
-set statusline=%<%f\ -\ %y%h%m%r%=%{fugitive#statusline()} " tail of the filename
-" set relativenumber                  " relative line number to cursor
+set statusline=%<%f\ -\ %y%h%m%r%=%{fugitive#statusline()}\ %P " tail of the filename
 set number                          " enable line number
-set numberwidth=5
 set cursorline                      " highlight cursor line
 set backspace=indent,eol,start      " allow backspacing over everything
 set history=500
@@ -93,7 +75,6 @@ set scrolloff=10                    " keep at least 10 lines below the cursor
 set list                            " show spaces and tabs
 set listchars=tab:»·,trail:·,nbsp:· " string represented in `list`
 set colorcolumn=50,72               " indicate column lines for text wrap
-" hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 set wrap                            " wrap line when lines are longer than the window width
 set splitright                      " open new vertical split panes to right
 set splitbelow                      " open new split panes to the bottom
@@ -112,7 +93,6 @@ set autoindent
 set copyindent
 
 " Highlight matching search term
-"set lisp                              " `-` is included in the keyword characters
 set nohlsearch
 set incsearch
 set hlsearch
@@ -124,13 +104,16 @@ nnoremap <leader>h :nohlsearch<cr>
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag
+  let g:grep_cmd_opts='--line-numbers --noheading'
+  let g:ag_prg="ag --vimgrep --case-sensitive"
+  let g:ag_highlight=1
 
-  " bind K to grep word under cursor
-  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+  " Use ag in ctrlp
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 
   " bind \ to :Ag!
-  nnoremap \ :Ag!<space>
+  nnoremap \ :Ag! --hidden<space>
 endif
 
 " Toggle line numbers from static to relative
@@ -151,3 +134,9 @@ function! BgToggle()
   endif
 endfunc
 nnoremap <F5> :call BgToggle()<cr>
+set diffopt+=vertical
+
+nnoremap <leader>b Orequire 'pry-remote'; binding.remote_pry<esc>
+
+" Allow netrw to remove non-empty local directories
+let g:netrw_localrmdir='rm -r'

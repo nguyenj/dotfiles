@@ -1,7 +1,9 @@
+# motion like vi motions
 set-option -g mode-keys vi
+set-option -g set-titles on
 # faster way to source tmux config
 bind-key C-r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
-bind-key C-s split-window -h "vim ~/.tmux.conf"
+bind-key s split-window -h "vim ~/.tmux.conf"
 
 # set default tmux display in 256 colors
 set-option -g default-terminal "screen-256color"
@@ -18,17 +20,19 @@ set -g renumber-windows on
 # break pane into new window
 bind-key b break-pane -d
 
-# gray out the statusbar
-# set-option -g status-bg "#666666"
-# set-option -g status-fg "#aaaaaa"
-
 # custom statusbar info on the right
 set-option -g status-right " #(battery -t -p -a) #(date '+%a, %b %d - %H:%M') "
 
-# # Vim style pane selection
-# bind h select-pane -L
-# bind j select-pane -D
-# bind k select-pane -U
-# bind l select-pane -R
-#
+# Vim style pane selection
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
 bind-key t split-window -h "vim ~/TODO.md"
+
+# Fine adjustment (1 or 2 cursor cells per bump)
+bind -n S-Left resize-pane -L 2
+bind -n S-Right resize-pane -R 2
+bind -n S-Down resize-pane -D 1
+bind -n S-Up resize-pane -U 1
