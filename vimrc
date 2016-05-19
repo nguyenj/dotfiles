@@ -11,15 +11,30 @@ syntax on                           " required for syntax highlighting
 filetype plugin indent on           " required
 runtime macros/matchit.vim          " activate matchit
 
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  "set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag
+  let g:grep_cmd_opts='--line-numbers --noheading'
+  let g:ag_prg="ag --vimgrep --case-sensitive"
+  let g:ag_highlight=1
+
+  " Use ag in ctrlp
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+
+  " bind \ to :Ag!
+  nnoremap \ :Ag! --hidden<space>
+endif
+
 " Plugin ctrlp
 let g:ctrlp_custom_ignore={
   \ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
   \ 'file': '\v\.(exe|so|dll|zip|swp|so|DS_Store)$'
   \ }
 let g:ctrlp_use_caching = 0
-
-" Plugin indentLine
-let g:indentLine_color_term = 8
+let g:ctrlp_switch_buffer='ETVH'
+let g:ctrlp_lazy_update=1
 
 " Map the leader to spacebar rather than \
 let mapleader = "\<Space>"
