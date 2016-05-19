@@ -24,6 +24,9 @@ let g:indentLine_color_term = 8
 " Map the leader to spacebar rather than \
 let mapleader = "\<Space>"
 
+" Enable mouse support
+set mouse=a
+
 " open up vimrc
 nmap <leader>vr :tabedit $MYVIMRC<cr>
 " reload vimrc
@@ -45,8 +48,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-set noswapfile                        " Don't create swap file
-set nobackup                          " Don't create backup files
+"set noswapfile                        " Don't create swap file
+"set nobackup                          " Don't create backup files
 
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<cr>
@@ -55,9 +58,6 @@ autocmd VimResized * :wincmd =
 
 set bg=light                         " set background theme to be dark
 colorscheme solarized
-"if isdirectory(expand("~/.dotfiles/vim/bundle/Spacegray.vim"))
-  "colorscheme spacegray
-"endif
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
