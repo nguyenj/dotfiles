@@ -34,13 +34,15 @@ let g:ctrlp_custom_ignore={
   \ }
 let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer='ETVH'
-let g:ctrlp_lazy_update=1
+"let g:ctrlp_lazy_update=1
 
 " Map the leader to spacebar rather than \
 let mapleader = "\<Space>"
 
 " Enable mouse support
-set mouse=a
+"set mouse=a
+" Yank to system clipboard
+set clipboard=unnamed
 
 " open up vimrc
 nmap <leader>vr :tabedit $MYVIMRC<cr>
@@ -70,19 +72,28 @@ nnoremap <C-l> <C-w>l
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
+" Support hamlc syntax, because it's basically haml
+au BufRead,BufNewFile *.hamlc set ft=haml
 
-set bg=light                         " set background theme to be dark
+set t_Co=256
+let g:solarized_termcolors=256
+set bg=dark                         " set background theme to be dark
 colorscheme solarized
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
 set title                           " set the title to the value of 'titlestring'
 set showmode                        " shows the current mode
-set showtabline=2                   " always show tabline
+"set showtabline=2                   " always show tabline
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
-set statusline=%<%f\ -\ %y%h%m%r%=%{fugitive#statusline()}\ %P " tail of the filename
-set number                          " enable line number
+set statusline=\ %<%f\ -\ %y%h%m%r
+set statusline+=%=                  " align anything after this to the right
+set statusline+=%{strftime(\"%k:%M\ %b\ %d\")} " set the time and date
+set statusline+=\ \-\                          " add status line divider
+set statusline+=%{fugitive#statusline()}\ %P\  " tail of the filename
+"set number                          " enable line number
+"set relativenumber
 set cursorline                      " highlight cursor line
 set backspace=indent,eol,start      " allow backspacing over everything
 set history=500
@@ -139,7 +150,7 @@ function! LineNumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <c-n> :call LineNumberToggle()<cr>
+nnoremap <c-S-n> :call LineNumberToggle()<cr>
 
 function! BgToggle()
   if (&bg == "dark")
@@ -154,4 +165,6 @@ set diffopt+=vertical
 nnoremap <leader>b Orequire 'pry-remote'; binding.remote_pry<esc>
 
 " Allow netrw to remove non-empty local directories
-let g:netrw_localrmdir='rm -r'
+let g:netrw_localrmdir='rm -rf'
+let g:netrw_rm_cmd = 'rm -rf'
+let g:netrw_rmdir_cmd = 'rm -rf'
