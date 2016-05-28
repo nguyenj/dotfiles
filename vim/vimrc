@@ -3,49 +3,63 @@ set encoding=utf-8                  " set character encoding inside vim
 
 filetype off                        " required
 
-if filereadable(expand("~/.dotfiles/vimrc.vundles"))
-  source ~/.dotfiles/vimrc.vundles
+if filereadable(expand("~/.dotfiles/vim/vimrc.vundles"))
+  source ~/.dotfiles/vim/vimrc.vundles
 endif
 
 syntax on                           " required for syntax highlighting
 filetype plugin indent on           " required
 runtime macros/matchit.vim          " activate matchit
 
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  "set grepprg=ag\ --nogroup\ --nocolor
-  set grepprg=ag
-  let g:grep_cmd_opts='--line-numbers --noheading'
-  let g:ag_prg="ag --vimgrep --case-sensitive"
-  let g:ag_highlight=1
+set completeopt=longest,menuone,preview
 
-  " Use ag in ctrlp
-  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+" Map the leader to spacebar rather than \
+let mapleader = "\<Space>"
 
-  " bind \ to :Ag!
-  nnoremap \ :Ag! --hidden<space>
-endif
+" Enable mouse support
+set mouse=a
+" Yank to system clipboard
+set clipboard=unnamed
+
+set hidden
+
+" Plugin Syntastic
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <leader>e :SyntasticCheck<CR>
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+" Plugin airline + tmuxline
+let g:airline_powerline_fonts=0
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_c = '%t'
+let g:tmuxline_powerline_separators=0
+let g:tmuxline_preset = {
+    \ 'a': '#S',
+    \ 'win': ['#I', '#W'],
+    \ 'cwin': ['#I', '#W'],
+    \ 'y': ['#(battery -tpa)  %b %d %R'],
+    \ 'z': '#h',
+    \'options' : {'status-justify' : 'left'}}
 
 " Plugin ctrlp
+let g:ctrlp_extensions = ['tag', 'buffertag', 'dir', 'line']
 let g:ctrlp_custom_ignore={
   \ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
   \ 'file': '\v\.(exe|so|dll|zip|swp|so|DS_Store)$'
   \ }
 let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer='ETVH'
-"let g:ctrlp_lazy_update=1
 
-" Map the leader to spacebar rather than \
-let mapleader = "\<Space>"
-
-" Enable mouse support
-"set mouse=a
-" Yank to system clipboard
-set clipboard=unnamed
+" Plugin Dispatch
+" Run rspec test
+nnoremap <leader>s :Dispatch bin/rspec <c-r>=expand("%:p")<cr>:<c-r>=line(".")<cr> --format doc --color<cr>
+nnoremap <leader>S :Dispatch bin/rspec <c-r>=expand("%:p")<cr> --format doc --color<cr>
 
 " open up vimrc
 nmap <leader>vr :tabedit $MYVIMRC<cr>
+nmap <leader>vb :tabedit $HOME/.dotfiles/vim/vimrc.vundles<cr>
 " reload vimrc
 nmap <leader>so :source $MYVIMRC<cr>
 " Pre-populate a split command with the current directory
@@ -65,20 +79,25 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-"set noswapfile                        " Don't create swap file
-"set nobackup                          " Don't create backup files
+set noswapfile                        " Don't create swap file
+set nobackup                          " Don't create backup files
 
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 " Support hamlc syntax, because it's basically haml
-au BufRead,BufNewFile *.hamlc set ft=haml
+autocmd BufRead,BufNewFile *.hamlc set ft=haml
+" Support yaml front matter in markdown files
+autocmd BufNewFile,BufRead,BufWrite *.md,*.html syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
+
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd BufNewFile,BufRead *.scss,*.styl             set ft=css
 
 set t_Co=256
-let g:solarized_termcolors=256
+let base16colorspace=256
 set bg=dark                         " set background theme to be dark
-colorscheme solarized
+colorscheme base16-ocean
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
@@ -87,12 +106,7 @@ set showmode                        " shows the current mode
 "set showtabline=2                   " always show tabline
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
-set statusline=\ %<%f\ -\ %y%h%m%r
-set statusline+=%=                  " align anything after this to the right
-set statusline+=%{strftime(\"%k:%M\ %b\ %d\")} " set the time and date
-set statusline+=\ \-\                          " add status line divider
-set statusline+=%{fugitive#statusline()}\ %P\  " tail of the filename
-"set number                          " enable line number
+set number                          " enable line number
 "set relativenumber
 set cursorline                      " highlight cursor line
 set backspace=indent,eol,start      " allow backspacing over everything
@@ -126,6 +140,7 @@ set ignorecase
 set smartcase
 " spacebar to turn off term highlighting
 nnoremap <leader>h :nohlsearch<cr>
+nnoremap ; :
 
 " The Silver Searcher
 if executable('ag')
@@ -162,9 +177,7 @@ endfunc
 nnoremap <F5> :call BgToggle()<cr>
 set diffopt+=vertical
 
-nnoremap <leader>b Orequire 'pry-remote'; binding.remote_pry<esc>
+"nnoremap <leader>b Orequire 'pry-remote'; binding.remote_pry<esc>
 
-" Allow netrw to remove non-empty local directories
-let g:netrw_localrmdir='rm -rf'
-let g:netrw_rm_cmd = 'rm -rf'
-let g:netrw_rmdir_cmd = 'rm -rf'
+let g:netrw_localrmdir='rm -r'
+let g:netrw_localrmdir="rm -rf"

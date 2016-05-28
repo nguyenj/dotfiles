@@ -1,0 +1,50 @@
+" Check if compatible
+if &compatible
+  set nocompatible
+end
+
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+  Plugin 'VundleVim/Vundle.vim'           " let Vundle manage Vundle, required
+
+  Plugin 'ag.vim'                         " silver searcher for vim
+  Plugin 'Chun-Yang/vim-action-ag'        " Ag anything
+  Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
+
+  Plugin 'christoomey/vim-tmux-navigator' " nagivate between vim and tmux panes
+
+  Plugin 'tpope/vim-dispatch'             " async runner
+  Plugin 'tpope/vim-fugitive'             " git wrapper
+  Plugin 'tpope/vim-surround'             " quoting and parenthesizing
+  Plugin 'tpope/vim-endwise'              " auto close ruby methods
+  Plugin 'raimondi/delimitmate'           " auto closing of quotes, parenthesis, brackets, etc...
+  Plugin 'godlygeek/tabular'              " align marked symbols
+  Plugin 'scrooloose/nerdcommenter'       " simple commenting
+  Plugin 'jeetsukumaran/vim-buffergator'  " buffer management
+
+  Plugin 'moll/vim-node'
+
+  " Syntax highlighting
+  Plugin 'wavded/vim-stylus'              " stylus syntax
+  Plugin 'cakebaker/scss-syntax.vim'      " scss syntax
+  Plugin 'digitaltoad/vim-jade'           " jade syntax
+  Plugin 'kchmck/vim-coffee-script'       " coffeescript syntax
+  Plugin 'pangloss/vim-javascript'        " javascript syntax
+
+  Plugin 'mattn/emmet-vim'                " emmet
+  Plugin 'AutoComplPop'                   " auto popup completion suggestions
+
+  " Visuals
+  Plugin 'airblade/vim-gitgutter'         " gitgutter
+  Plugin 'chriskempson/base16-vim'
+  Plugin 'scrooloose/syntastic'           " syntax linting
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'edkolev/tmuxline.vim'
+
+call vundle#end()                    " required
+
+filetype on
