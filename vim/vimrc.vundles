@@ -39,7 +39,7 @@ call vundle#begin()
 
   " Visuals
   Plugin 'airblade/vim-gitgutter'         " gitgutter
-  Plugin 'chriskempson/base16-vim'
+  Plugin 'altercation/vim-colors-solarized'
   Plugin 'scrooloose/syntastic'           " syntax linting
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'

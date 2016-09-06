@@ -94,10 +94,9 @@ autocmd BufNewFile,BufRead,BufWrite *.md,*.html syntax match Comment /\%^---\_.\
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.scss,*.styl             set ft=css
 
-set t_Co=256
-let base16colorspace=256
+let g:solarized_termcolors=256
 set bg=dark                         " set background theme to be dark
-colorscheme base16-ocean
+colorscheme solarized
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
@@ -151,10 +150,10 @@ if executable('ag')
   let g:ag_highlight=1
 
   " Use ag in ctrlp
-  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --hidden --silent --nocolor -g ""'
 
   " bind \ to :Ag!
-  nnoremap \ :Ag! --hidden<space>
+  nnoremap \ :Ag! --hidden --silent<space>
 endif
 
 " Toggle line numbers from static to relative
