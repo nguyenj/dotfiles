@@ -11,10 +11,11 @@ syntax on                           " required for syntax highlighting
 filetype plugin indent on           " required
 runtime macros/matchit.vim          " activate matchit
 
-set completeopt=longest,menuone,preview
-
 " Map the leader to spacebar rather than \
 let mapleader = "\<Space>"
+nmap ; :
+
+set completeopt=longest,menuone,preview
 
 " Enable mouse support
 set mouse=a
