@@ -33,6 +33,7 @@ call vundle#begin()
   Plugin 'digitaltoad/vim-jade'           " jade syntax
   Plugin 'kchmck/vim-coffee-script'       " coffeescript syntax
   Plugin 'pangloss/vim-javascript'        " javascript syntax
+  Plugin 'othree/jsdoc-syntax.vim'        " JSDocs syntax
 
   Plugin 'mattn/emmet-vim'                " emmet
   Plugin 'AutoComplPop'                   " auto popup completion suggestions
