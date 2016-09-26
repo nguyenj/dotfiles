@@ -123,19 +123,18 @@ function! s:EnsureDirectoryExists()
   endif
 endfunction
 
-let g:solarized_termcolors=256
 set bg=dark                         " set background theme to be dark
+let g:solarized_termcolors=256
 colorscheme solarized
+set lazyredraw                      " disable redraw during actions
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
 set title                           " set the title to the value of 'titlestring'
 set showmode                        " shows the current mode
-"set showtabline=2                   " always show tabline
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
 set number                          " enable line number
-"set relativenumber
 set cursorline                      " highlight cursor line
 set backspace=indent,eol,start      " allow backspacing over everything
 set history=500
@@ -146,7 +145,6 @@ set colorcolumn=50,72               " indicate column lines for text wrap
 set wrap                            " wrap line when lines are longer than the window width
 set splitright                      " open new vertical split panes to right
 set splitbelow                      " open new split panes to the bottom
-set guifont=Monaco:h18              " set the font type and size
 set visualbell                      " Set visual bell instad of a 'BEEP'
 set noerrorbells                    " Turn off the bell
 set wildmenu
@@ -168,7 +166,6 @@ set ignorecase
 set smartcase
 " spacebar to turn off term highlighting
 nnoremap <leader>h :nohlsearch<cr>
-nnoremap ; :
 
 " The Silver Searcher
 if executable('ag')
@@ -194,18 +191,3 @@ function! LineNumberToggle()
   endif
 endfunc
 nnoremap <c-S-n> :call LineNumberToggle()<cr>
-
-function! BgToggle()
-  if (&bg == "dark")
-    set bg=light
-  else
-    set bg=dark
-  endif
-endfunc
-nnoremap <F5> :call BgToggle()<cr>
-set diffopt+=vertical
-
-"nnoremap <leader>b Orequire 'pry-remote'; binding.remote_pry<esc>
-
-let g:netrw_localrmdir='rm -r'
-let g:netrw_localrmdir="rm -rf"
