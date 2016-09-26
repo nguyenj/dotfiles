@@ -42,14 +42,32 @@ let g:tmuxline_preset = {
     \ 'z': '#h',
     \'options' : {'status-justify' : 'left'}}
 
+" The Silver Searcher
 " Plugin ctrlp
 let g:ctrlp_extensions = ['tag', 'buffertag', 'dir', 'line']
-let g:ctrlp_custom_ignore={
-  \ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
-  \ 'file': '\v\.(exe|so|dll|zip|swp|so|DS_Store)$'
-  \ }
 let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer='ETVH'
+let g:ctrlp_max_files=0
+let g:ctrlp_match_natural_name = 1
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag
+  let g:grep_cmd_opts='--line-numbers --noheading'
+  let g:ag_prg="ag --vimgrep --case-sensitive"
+  let g:ag_highlight=1
+
+  " Use ag in ctrlp
+  let g:ctrlp_user_command = 'ag %s -l -f -S --hidden --nocolor --silent -g ""'
+  "let g:ctrlp_user_command += '--ignore ""'
+
+  " bind \ to :Ag!
+  nnoremap \ :Ag! --hidden --silent<space>
+else
+  let g:ctrlp_custom_ignore={
+    "\ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
+    "\ 'file': '\v\.(exe|so|dll|zip|swp|so|DS_Store)$'
+    "\ }
+endif
 
 " Plugin Dispatch
 " Run rspec test
@@ -166,21 +184,6 @@ set ignorecase
 set smartcase
 " spacebar to turn off term highlighting
 nnoremap <leader>h :nohlsearch<cr>
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag
-  let g:grep_cmd_opts='--line-numbers --noheading'
-  let g:ag_prg="ag --vimgrep --case-sensitive"
-  let g:ag_highlight=1
-
-  " Use ag in ctrlp
-  let g:ctrlp_user_command = 'ag %s -l --hidden --silent --nocolor -g ""'
-
-  " bind \ to :Ag!
-  nnoremap \ :Ag! --hidden --silent<space>
-endif
 
 " Toggle line numbers from static to relative
 function! LineNumberToggle()
