@@ -93,7 +93,35 @@ autocmd BufRead,BufNewFile *.hamlc set ft=haml
 autocmd BufNewFile,BufRead,BufWrite *.md,*.html syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
 
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd BufNewFile,BufRead *.scss,*.styl             set ft=css
+autocmd BufNewFile,BufRead *.scss,*.styl set ft=css
+
+autocmd Filetype ruby nmap <buffer> <Leader>de <S-o>require 'pry-remote';binding.remote_pry<Esc>
+
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd Filetype javascript,coffeescript nmap <buffer> <Leader>de <S-o>debugger<Esc>
+
+" Upon saving a file in a new directory, create the directory if it does not
+" exist on confirmation.
+augroup ensure_directory_exists
+  autocmd!
+  autocmd BufNewFile * call s:EnsureDirectoryExists()
+augroup end
+function! s:EnsureDirectoryExists()
+  let required_dir = expand("%:h")
+
+  if !isdirectory(required_dir)
+    " Remove this if-clause if you don't need the confirmation
+    if !confirm("Directory '" . required_dir . "' doesn't exist. Create it?")
+      return
+    endif
+
+    try
+      call mkdir(required_dir, 'p')
+    catch
+      echoerr "Can't create '" . required_dir . "'"
+    endtry
+  endif
+endfunction
 
 let g:solarized_termcolors=256
 set bg=dark                         " set background theme to be dark
