@@ -22,8 +22,6 @@ set mouse=a
 " Yank to system clipboard
 set clipboard=unnamed
 
-set hidden
-
 " Plugin Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <leader>e :SyntasticCheck<CR>
@@ -71,7 +69,6 @@ nmap 0 ^
 nmap j gj
 " nmap k g
 " Exit Insert mode
-imap jk <esc>
 imap jj <esc>
 
 " Quicker window movement
@@ -80,8 +77,11 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+set hidden
 set noswapfile                        " Don't create swap file
 set nobackup                          " Don't create backup files
+
+set diffopt=vertical
 
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<cr>
