@@ -45,6 +45,10 @@ let g:tmuxline_preset = {
 " The Silver Searcher
 " Plugin ctrlp
 let g:ctrlp_extensions = ['tag', 'buffertag', 'dir', 'line']
+let g:ctrlp_custom_ignore={
+  \ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
+  \ 'file': '\v\.(exe|so|dll|zip|swp|so|DS_Store)$'
+  \ }
 let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer='ETVH'
 let g:ctrlp_max_files=0
@@ -57,7 +61,8 @@ if executable('ag')
   let g:ag_highlight=1
 
   " Use ag in ctrlp
-  let g:ctrlp_user_command = 'ag %s -l -f -S --hidden --nocolor --silent -g ""'
+  let g:ctrlp_user_command = 'rg -l -S --follow --hidden %s -e ""'
+  "let g:ctrlp_user_command = 'ag %s -l -f -S --hidden --nocolor --silent -g ""'
   "let g:ctrlp_user_command += '--ignore ""'
 
   " bind \ to :Ag!
