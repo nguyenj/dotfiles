@@ -22,6 +22,10 @@ set mouse=a
 " Yank to system clipboard
 set clipboard=unnamed
 
+" Plugin NerdCommenter
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'start'
+
 " Plugin Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <leader>e :SyntasticCheck<CR>

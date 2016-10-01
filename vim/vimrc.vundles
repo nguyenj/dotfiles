@@ -21,7 +21,6 @@ call vundle#begin()
   Plugin 'tpope/vim-endwise'              " auto close ruby methods
   Plugin 'godlygeek/tabular'              " align marked symbols
   Plugin 'scrooloose/nerdcommenter'       " simple commenting
-  Plugin 'jeetsukumaran/vim-buffergator'  " buffer management
 
   Plugin 'moll/vim-node'
 
