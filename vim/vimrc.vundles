@@ -10,8 +10,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'           " let Vundle manage Vundle, required
 
-  Plugin 'ag.vim'                         " silver searcher for vim
-  Plugin 'Chun-Yang/vim-action-ag'        " Ag anything
+  Plugin 'mhinz/vim-grepper'              " grepping interface in vim
   Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
 
   Plugin 'christoomey/vim-tmux-navigator' " nagivate between vim and tmux panes
