@@ -40,9 +40,11 @@ if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading
   let g:grepper = {
     \ 'tools': ['rg'],
-    \ 'next_tool': '\',
+    \ 'next_tool': '\\',
     \ 'highlight': 1,
+    \ 'prompt': 0
     \ }
+  let g:grepper.rg = { 'grepprg': 'rg --no-heading --vimgrep' }
   " map vim grepper
   nmap \ :Grepper -query 
   nmap gs :Grepper -cword -noprompt<CR>
