@@ -112,6 +112,12 @@ set diffopt=vertical
 
 " Bind `q` to close quickfix window
 autocmd BufReadPost quickfix nnoremap <buffer> q :q <CR>
+autocmd BufReadPost quickfix nnoremap <silent> <buffer> h  <C-W><CR><C-w>K
+autocmd BufReadPost quickfix noremap <silent> <buffer> H  <C-W><CR><C-w>K<C-w>b
+autocmd BufReadPost quickfix noremap <silent> <buffer> o  <CR>
+autocmd BufReadPost quickfix noremap <silent> <buffer> t  <C-w><CR><C-w>T
+autocmd BufReadPost quickfix noremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
+autocmd BufReadPost quickfix noremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<cr>
 " automatically rebalance windows on vim resize
