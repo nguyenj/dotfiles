@@ -176,6 +176,10 @@ set title                           " set the title to the value of 'titlestring
 set showmode                        " shows the current mode
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
+set statusline=%{fugitive#statusline()}\ 
+" set statusline+=%f\ %h%w%m%r\ 
+set statusline+=%t
+set statusline+=%=%(%l,%c%V\ %=\ %P%)
 set number                          " enable line number
 set cursorline                      " highlight cursor line
 set backspace=indent,eol,start      " allow backspacing over everything
