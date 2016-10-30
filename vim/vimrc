@@ -167,8 +167,7 @@ function! s:EnsureDirectoryExists()
 endfunction
 
 set bg=dark                         " set background theme to be dark
-let g:solarized_termcolors=256
-colorscheme solarized
+color dracula
 set lazyredraw                      " disable redraw during actions
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
