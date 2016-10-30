@@ -20,7 +20,7 @@ call vundle#begin()
   Plugin 'tpope/vim-surround'             " quoting and parenthesizing
   Plugin 'tpope/vim-endwise'              " auto close ruby methods
   Plugin 'godlygeek/tabular'              " align marked symbols
-  Plugin 'scrooloose/nerdcommenter'       " simple commenting
+  Plugin 'tpope/vim-commentary'           " simple commenting
 
   Plugin 'moll/vim-node'
 
