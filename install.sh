@@ -18,22 +18,6 @@ if [ ! -e $HOME/.tmux.conf ]; then
   ln -s $DOTFILES_ROOT/tmux/tmux.conf $HOME/.tmux.conf
 fi
 
-# setup vim config
-if [ ! -e ~/.vimrc ]; then
-  echo "Setting up vim"
-  mkdir -pv $DOTFILES_ROOT/vim/vim/bundle
-  if [ ! -d ~/.vim ]; then
-    ln -s $DOTFILES_ROOT/vim/vim ~/.vim
-  fi
-  if [ ! -e ~/.vimrc ]; then
-    ln -s $DOTFILES_ROOT/vim/vimrc ~/.vimrc
-  fi
-  if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
-    git clone git@github.com:gmarik/Vundle.vim.git $DOTFILES_ROOT/vim/vim/bundle/Vundle.vim
-  fi
-  vim +PluginInstall +PluginClean! +qall
-fi
-
 # # setup git config
 # echo "Setting up git"
 # ln -s $DOTFILES_ROOT/gitconfig ~/.gitconfig

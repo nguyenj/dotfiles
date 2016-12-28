@@ -42,11 +42,11 @@ call vundle#begin()
   Plugin 'othree/jsdoc-syntax.vim'
   Plugin 'leafgarland/typescript-vim'
   Plugin 'editorconfig/editorconfig-vim'
-  
+
   " --------------------
   " Theme
   " --------------------
-  Plugin 'dracula/vim'                    " Dracula colorscheme
+  Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 

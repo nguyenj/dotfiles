@@ -11,3 +11,9 @@ Just trying it out.
 ```
 ./bash/setup.sh
 ```
+
+### VIM
+
+```
+./vim/setup.sh
+```
