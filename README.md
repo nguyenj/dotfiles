@@ -5,4 +5,9 @@ Just trying it out.
 
 - `$ git clone git@github.com:nguyenj/dotfiles.git ~/.dotfiles`
 - `$ cd ~/.dotfiles`
-- `$ ./install.sh`
+
+### Bash
+
+```
+./bash/setup.sh
+```

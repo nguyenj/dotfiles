@@ -2,16 +2,6 @@
 
 DOTFILES_ROOT=$(pwd -P)
 
-# # Linking .zshrc
-# cd $DOTFILES_ROOT/zsh/
-# sh zsh.sh
-
-# Setup bashrc
-if [ ! -e $HOME/.bashrc ]; then
-  echo "Linking .bashrc..."
-  ln -s $DOTFILES_ROOT/bash/bashrc $HOME/.bashrc
-fi
-
 # setup homebrew
 cd $DOTFILES_ROOT/homebrew
 sh brew.sh

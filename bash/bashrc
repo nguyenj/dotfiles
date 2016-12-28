@@ -1,3 +1,9 @@
+# Set default editor to vim
+export EDITOR=vim
+
+# rbenv init
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # Bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
@@ -8,6 +14,10 @@ if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
   GIT_PROMPT_THEME=Custom
   source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
 fi
+
+# Setup base16 shell colorscheme
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Alias
 # git
