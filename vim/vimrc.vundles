@@ -1,45 +1,53 @@
-" Check if compatible
 if &compatible
   set nocompatible
 end
 
 filetype off
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
-  Plugin 'VundleVim/Vundle.vim'           " let Vundle manage Vundle, required
+  " --------------------
+  " vim Plugin manager
+  " --------------------
+  Plugin 'VundleVim/Vundle.vim'
 
-  Plugin 'mhinz/vim-grepper'              " grepping interface in vim
-  Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
+  " --------------------
+  " Fuzzy searching utilities
+  " --------------------
+  Plugin 'mhinz/vim-grepper'
+  Plugin 'ctrlpvim/ctrlp.vim'
 
-  Plugin 'christoomey/vim-tmux-navigator' " nagivate between vim and tmux panes
-
-  Plugin 'tpope/vim-dispatch'             " async runner
+  " --------------------
+  " Utilities
+  " --------------------
   Plugin 'tpope/vim-fugitive'             " git wrapper
+  Plugin 'junegunn/gv.vim'                " git commit browser
+  Plugin 'airblade/vim-gitgutter'
+  Plugin 'godlygeek/tabular'              " align marked symbols
+  Plugin 'christoomey/vim-tmux-navigator' " nagivate between vim and tmux panes
+  Plugin 'tpope/vim-dispatch'             " async runner
   Plugin 'tpope/vim-surround'             " quoting and parenthesizing
   Plugin 'tpope/vim-endwise'              " auto close ruby methods
-  Plugin 'godlygeek/tabular'              " align marked symbols
   Plugin 'tpope/vim-commentary'           " simple commenting
 
-  Plugin 'moll/vim-node'
-
-  " Syntax highlighting
-  Plugin 'wavded/vim-stylus'              " stylus syntax
-  Plugin 'cakebaker/scss-syntax.vim'      " scss syntax
-  Plugin 'digitaltoad/vim-jade'           " jade syntax
-  Plugin 'kchmck/vim-coffee-script'       " coffeescript syntax
-  Plugin 'pangloss/vim-javascript'        " javascript syntax
-  Plugin 'othree/jsdoc-syntax.vim'        " JSDocs syntax
-  Plugin 'leafgarland/typescript-vim'     " typescript
-
-  Plugin 'mattn/emmet-vim'                " emmet
-
-  " Visuals
-  Plugin 'airblade/vim-gitgutter'         " gitgutter
+  " --------------------
+  " Syntax support and highlighting
+  " --------------------
+  Plugin 'wavded/vim-stylus'
+  Plugin 'cakebaker/scss-syntax.vim'
+  Plugin 'digitaltoad/vim-jade'
+  Plugin 'kchmck/vim-coffee-script'
+  Plugin 'pangloss/vim-javascript'
+  Plugin 'othree/jsdoc-syntax.vim'
+  Plugin 'leafgarland/typescript-vim'
+  Plugin 'editorconfig/editorconfig-vim'
+  
+  " --------------------
+  " Theme
+  " --------------------
   Plugin 'dracula/vim'                    " Dracula colorscheme
-  Plugin 'scrooloose/syntastic'           " syntax linting
 
-call vundle#end()                    " required
+call vundle#end()
 
 filetype on
