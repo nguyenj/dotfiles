@@ -21,8 +21,14 @@ if [ ! -e $HOME/.bashrc ]; then
   ln -s $DOTFILES_ROOT/bash/bashrc $HOME/.bashrc
 fi
 
-# setup tat for tmux
+# Setup tat for tmux
 if [ ! -e $HOME/.config/tat ]; then
   echo "Installing tat for tmux"
   curl -L https://github.com/ryandotsmith/tat/archive/master.tar.gz | tar xvf - -C $HOME/.config/
+fi
+
+# Setup tig for git shell interface
+if [ ! -e $HOME/.config/tig-2.2.1 ]; then
+  curl -L https://github.com/jonas/tig/releases/download/tig-2.2.1/tig-2.2.1.tar.gz | tar xvf - -C $HOME/.config/
+  cd $HOME/.config/tig-2.2.1 && make prefix=/usr/local && make install prefix=/usr/local
 fi
