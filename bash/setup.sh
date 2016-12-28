@@ -20,3 +20,9 @@ if [ ! -e $HOME/.bashrc ]; then
   echo "Linking .bashrc..."
   ln -s $DOTFILES_ROOT/bash/bashrc $HOME/.bashrc
 fi
+
+# setup tat for tmux
+if [ ! -e $HOME/.config/tat ]; then
+  echo "Installing tat for tmux"
+  curl -L https://github.com/ryandotsmith/tat/archive/master.tar.gz | tar xvf - -C $HOME/.config/
+fi
