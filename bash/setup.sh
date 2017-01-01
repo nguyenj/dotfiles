@@ -10,8 +10,8 @@ if [ ! -e $HOME/.config/base16-shell ]; then
   git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 
   if [ ! -e $HOME/.base16_theme ]; then
-    echo "Configure shell colorscheme to tomorrow-night"
-    ln -s $HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh $HOME/.base16_theme
+    echo "Configuring shell base16 colorschemee"
+    ln -s $HOME/.config/base16-shell/scripts/base16-default-light.sh $HOME/.base16_theme
   fi
 fi
 
