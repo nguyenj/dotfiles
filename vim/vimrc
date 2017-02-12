@@ -14,22 +14,10 @@ syntax on                           " required for syntax highlighting
 filetype plugin indent on           " required
 runtime macros/matchit.vim          " activate matchit
 
-" Map the leader to spacebar rather than \
-let mapleader = "\<Space>"
-nmap ; :
-
-set completeopt=longest,menuone,preview
-
-" Enable mouse support
-set mouse=a
-" Yank to system clipboard
-set clipboard=unnamed
-
-" Plugin Syntastic
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <leader>e :SyntasticCheck<CR>
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" --------------------
+" Plugin configurations
+" --------------------
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Plugin ctrlp
 let g:ctrlp_use_caching = 0
