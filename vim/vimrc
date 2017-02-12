@@ -229,3 +229,11 @@ function! LineNumberToggle()
   endif
 endfunc
 nnoremap <c-S-n> :call LineNumberToggle()<cr>
+" --------------------
+" Visual display
+" --------------------
+if filereadable(expand("~/.vimrc_background"))
+  set background=light
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
