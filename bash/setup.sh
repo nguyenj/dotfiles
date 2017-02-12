@@ -27,6 +27,13 @@ if [ ! -e $HOME/.config/tat ]; then
   curl -L https://github.com/ryandotsmith/tat/archive/master.tar.gz | tar xvf - -C $HOME/.config/
 fi
 
+# Setup matcher (vim ctrlp)
+if [ ! -e $HOME/.config/matcher-1.0.0 ]; then
+  echo "Install matcher for vim ctrlp"
+  curl -L https://github.com/burke/matcher/archive/1.0.0.tar.gz | tar xvf - -C $HOME/.config/
+  cd $HOME/.config/matcher-1.0.0 && make && make install
+fi
+
 # Setup tig for git shell interface
 if [ ! -e $HOME/.config/tig-2.2.1 ]; then
   curl -L https://github.com/jonas/tig/releases/download/tig-2.2.1/tig-2.2.1.tar.gz | tar xvf - -C $HOME/.config/

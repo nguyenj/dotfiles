@@ -3,6 +3,9 @@ set encoding=utf-8                  " set character encoding inside vim
 
 filetype off                        " required
 
+" --------------------
+" Plugins
+" --------------------
 if filereadable(expand("~/.dotfiles/vim/vimrc.vundles"))
   source ~/.dotfiles/vim/vimrc.vundles
 endif
@@ -32,23 +35,26 @@ let g:syntastic_check_on_wq = 0
 let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer='ETVH'
 let g:ctrlp_max_files=0
+
 " ripgrep
 if executable('rg')
-  " Use rg in ctrlp
-  let g:ctrlp_user_command = 'rg -l -L -S --hidden %s -e ""'
-  " Use rg for regular grep
   set grepprg=rg\ --vimgrep\ --no-heading
-  let g:grepper = {
-    \ 'tools': ['rg'],
-    \ 'next_tool': '\\',
-    \ 'highlight': 1,
-    \ 'prompt': 0
-    \ }
-  let g:grepper.rg = { 'grepprg': 'rg --no-heading --vimgrep' }
-  " map vim grepper
-  nmap \ :Grepper -query 
-  nmap gs :Grepper -cword -noprompt<CR>
-  vmap gs y<CR>:Grepper -query <C-r>"<CR>
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+  function! MySearch()
+    let grep_term = input("Enter search term: ")
+    if !empty(grep_term)
+      execute 'silent grep!' grep_term | copen
+    else
+      echo "Empty search term"
+    endif
+    redraw!
+  endfunction
+  command! Search call MySearch()
+  nnoremap \ :Search<CR>
+  nnoremap K "ayw :Search<CR><C-r>a<CR>
+
+  " Use rg in ctrlp
+  let g:ctrlp_user_command = 'rg -l -L -S -j 4 --hidden %s -e ""'
 else
   let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
@@ -57,6 +63,7 @@ else
 endif
 
 if executable('matcher')
+  let g:path_to_matcher = "/usr/local/bin/matcher"
   let g:ctrlp_match_func = { 'match': 'GoodMatch' }
   function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
     " Create a cache file if not yet exists
@@ -69,7 +76,7 @@ if executable('matcher')
     endif
     " a:mmode is currently ignored. In the future, we should probably do
     " something about that. the matcher behaves like "full-line".
-    let cmd = 'matcher --limit '.a:limit.' --manifest '.cachefile.' '
+    let cmd = g:path_to_matcher.' --limit '.a:limit.' --manifest '.cachefile.' '
     if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
       let cmd = cmd.'--no-dotfiles '
     endif
