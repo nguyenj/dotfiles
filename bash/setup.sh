@@ -22,7 +22,7 @@ if [ ! -e $HOME/.bashrc ]; then
 fi
 
 # Setup tat for tmux
-if [ ! -e $HOME/.config/tat ]; then
+if [ ! -e $HOME/.config/tat-master ]; then
   echo "Installing tat for tmux"
   curl -L https://github.com/ryandotsmith/tat/archive/master.tar.gz | tar xvf - -C $HOME/.config/
 fi
