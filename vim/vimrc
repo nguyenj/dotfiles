@@ -173,9 +173,9 @@ function! s:EnsureDirectoryExists()
   endif
 endfunction
 
-set bg=dark                         " set background theme to be dark
-color dracula
-set lazyredraw                      " disable redraw during actions
+" --------------------
+" GUI configurations
+" --------------------
 set lazyredraw                      " disable redraw during actions
 set autoread                        " display file changes immediately
 set ttyfast                         " more characters sent to the screen to for smoother redraws
@@ -183,26 +183,22 @@ set title                           " set the title to the value of 'titlestring
 set showmode                        " shows the current mode
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
-set statusline=%{fugitive#statusline()}\ 
-" set statusline+=%f\ %h%w%m%r\ 
-set statusline+=%t
-set statusline+=%=%(%l,%c%V\ %=\ %P%)
+set statusline+=%{fugitive#statusline()}\ 
+set statusline+=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set number                          " enable line number
+set relativenumber
 set cursorline                      " highlight cursor line
-set backspace=indent,eol,start      " allow backspacing over everything
 set history=500
-set scrolloff=10                    " keep at least 10 lines below the cursor
 set list                            " show spaces and tabs
 set listchars=tab:»·,trail:·,nbsp:· " string represented in `list`
-set colorcolumn=50,72               " indicate column lines for text wrap
-set wrap                            " wrap line when lines are longer than the window width
 set splitright                      " open new vertical split panes to right
 set splitbelow                      " open new split panes to the bottom
 set visualbell                      " Set visual bell instad of a 'BEEP'
-set noerrorbells                    " Turn off the bell
 set wildmenu
 
-" Use softtabs, 2 spaces
+" --------------------
+" Text and display formatting
+" --------------------
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -211,14 +207,12 @@ set expandtab
 set autoindent
 set copyindent
 
-" Highlight matching search term
 set nohlsearch
 set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-" spacebar to turn off term highlighting
-nnoremap <leader>h :nohlsearch<cr>
+set wrap                            " wrap line when lines are longer than the window width
 
 " Toggle line numbers from static to relative
 function! LineNumberToggle()
