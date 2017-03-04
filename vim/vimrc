@@ -20,9 +20,39 @@ runtime macros/matchit.vim          " activate matchit
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Plugin ctrlp
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_lazy_update = 200
 let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer='ETVH'
 let g:ctrlp_max_files=0
+
+" Plugin ctrlp-py-matcher
+if has('python')
+  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+elseif executable('matcher')
+  function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
+    " Create a cache file if not yet exists
+    let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
+    if !( filereadable(cachefile) && a:items == readfile(cachefile) )
+      call writefile(a:items, cachefile)
+    endif
+    if !filereadable(cachefile)
+      return []
+    endif
+    " a:mmode is currently ignored. In the future, we should probably do
+    " something about that. the matcher behaves like "full-line".
+    let cmd = g:path_to_matcher.' --limit '.a:limit.' --manifest '.cachefile.' '
+    if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
+      let cmd = cmd.'--no-dotfiles '
+    endif
+    let cmd = cmd.a:str
+    return split(system(cmd), "\n")
+  endfunction
+
+  let g:path_to_matcher = "/usr/local/bin/matcher"
+  let g:ctrlp_match_func = { 'match': 'GoodMatch' }
+endif
 
 " ripgrep
 if executable('rg')
@@ -42,7 +72,7 @@ if executable('rg')
   nnoremap K "ayw :Search<CR><C-r>a<CR>
 
   " Use rg in ctrlp
-  let g:ctrlp_user_command = 'rg -l -L -S -j 4 --hidden %s -e ""'
+  let g:ctrlp_user_command = 'rg --ignore-file .gitignore --glob !.git --files-with-matches --follow --smart-case --threads 4 --vimgrep --hidden %s --regexp ""'
 else
   let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/](node_modules|tmp)|(\.(git|hg|svn|sass-cache))$',
