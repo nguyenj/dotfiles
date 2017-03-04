@@ -81,65 +81,49 @@ else
     \ }
 endif
 
-if executable('matcher')
-  let g:path_to_matcher = "/usr/local/bin/matcher"
-  let g:ctrlp_match_func = { 'match': 'GoodMatch' }
-  function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
-    " Create a cache file if not yet exists
-    let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
-    if !( filereadable(cachefile) && a:items == readfile(cachefile) )
-      call writefile(a:items, cachefile)
-    endif
-    if !filereadable(cachefile)
-      return []
-    endif
-    " a:mmode is currently ignored. In the future, we should probably do
-    " something about that. the matcher behaves like "full-line".
-    let cmd = g:path_to_matcher.' --limit '.a:limit.' --manifest '.cachefile.' '
-    if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
-      let cmd = cmd.'--no-dotfiles '
-    endif
-    let cmd = cmd.a:str
-    return split(system(cmd), "\n")
-  endfunction
-endif
+" --------------------
+" Key bindings
+" --------------------
+let mapleader = "\<Space>"          " Map the leader to spacebar rather than \
+nmap <leader>vr :tabedit $MYVIMRC<cr>
+nmap <leader>vb :tabedit $HOME/.dotfiles/vim/vimrc.vundles<cr>
+nnoremap <leader>h :nohlsearch<cr>
+imap <C-l> <C-x><C-l>
+
+" --------------------
+" Basic configurations
+" --------------------
+set mouse=a                         " Enable mouse support
+set hidden
+set noswapfile                      " Don't create swap file
+set nobackup                        " Don't create backup files
+set diffopt=vertical
+set clipboard=unnamed               " Yank to system clipboard
+set noerrorbells                    " Turn off the bell
+set backspace=indent,eol,start      " allow backspacing over everything
+
+" set completeopt=longest,menuone,preview
 
 " Plugin Dispatch
 " Run rspec test
 nnoremap <leader>s :Dispatch bin/rspec <c-r>=expand("%:p")<cr>:<c-r>=line(".")<cr> --format doc --color<cr>
 nnoremap <leader>S :Dispatch bin/rspec <c-r>=expand("%:p")<cr> --format doc --color<cr>
+set shellpipe+=\ 
 
-" open up vimrc
-nmap <leader>vr :tabedit $MYVIMRC<cr>
-nmap <leader>vb :tabedit $HOME/.dotfiles/vim/vimrc.vundles<cr>
 " reload vimrc
 nmap <leader>so :source $MYVIMRC<cr>
-" Pre-populate a split command with the current directory
-nmap <leader>n :tabnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
-" Map 0 to ^
-nmap 0 ^
-" Move up and down by visible lines if current line is wrapped
-nmap j gj
-" nmap k g
-" Exit Insert mode
-imap jj <esc>
+" " Pre-populate a split command with the current directory
+" nmap <leader>n :tabnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
+" " Map 0 to ^
+" nmap 0 ^
+" " Move up and down by visible lines if current line is wrapped
+" nmap j gj
+" " nmap k g
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" Quicker max screen for horizontal splits
-nnoremap <C-f> <C-w>_
-" Quicker equalize screen for horizontal splits
-nnoremap = <C-w>=
-
-set hidden
-set noswapfile                        " Don't create swap file
-set nobackup                          " Don't create backup files
-
-set diffopt=vertical
+" " Quicker max screen for horizontal splits
+" nnoremap <C-f> <C-w>_
+" " Quicker equalize screen for horizontal splits
+" nnoremap = <C-w>=
 
 " Bind `q` to close quickfix window
 autocmd BufReadPost quickfix nnoremap <buffer> q :q <CR>
@@ -160,7 +144,7 @@ autocmd BufNewFile,BufRead,BufWrite *.md,*.haml,*.html syntax match Comment /\%^
 
 " CSS auto commands
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd BufNewFile,BufRead *.scss,*.styl set ft=css
+" autocmd BufNewFile,BufRead *.scss,*.styl set ft=css
 
 " Ruby auto commands
 autocmd Filetype ruby nmap <buffer> <Leader>de <S-o>require 'pry-remote';binding.remote_pry<Esc>
@@ -233,15 +217,6 @@ set ignorecase
 set smartcase
 set wrap                            " wrap line when lines are longer than the window width
 
-" Toggle line numbers from static to relative
-function! LineNumberToggle()
-  if (&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <c-S-n> :call LineNumberToggle()<cr>
 " --------------------
 " Visual display
 " --------------------
