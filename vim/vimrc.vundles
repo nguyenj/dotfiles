@@ -34,14 +34,24 @@ call vundle#begin()
   " --------------------
   " Syntax support and highlighting
   " --------------------
+  Plugin 'editorconfig/editorconfig-vim'
+
+  " CSS
   Plugin 'wavded/vim-stylus'
   Plugin 'cakebaker/scss-syntax.vim'
-  Plugin 'digitaltoad/vim-jade'
+
+  " JavaScript
+  Plugin 'moll/vim-node'
+  Plugin 'othree/jsdoc-syntax.vim'
   Plugin 'kchmck/vim-coffee-script'
   Plugin 'pangloss/vim-javascript'
-  Plugin 'othree/jsdoc-syntax.vim'
   Plugin 'leafgarland/typescript-vim'
-  Plugin 'editorconfig/editorconfig-vim'
+  Plugin 'posva/vim-vue'
+
+  " Markup
+  Plugin 'mattn/emmet-vim'
+  Plugin 'othree/html5.vim'
+  Plugin 'digitaltoad/vim-pug'
 
   " --------------------
   " Theme
