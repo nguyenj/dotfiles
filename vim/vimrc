@@ -220,7 +220,7 @@ set wrap                            " wrap line when lines are longer than the w
 " Visual display
 " --------------------
 if filereadable(expand("~/.vimrc_background"))
-  set background=light
+  set background=dark
   let base16colorspace=256
   source ~/.vimrc_background
 endif

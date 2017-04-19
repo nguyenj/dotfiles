@@ -11,7 +11,7 @@ if [ ! -e $HOME/.config/base16-shell ]; then
 
   if [ ! -e $HOME/.base16_theme ]; then
     echo "Configuring shell base16 colorschemee"
-    ln -s $HOME/.config/base16-shell/scripts/base16-default-light.sh $HOME/.base16_theme
+    ln -svf $HOME/.config/base16-shell/scripts/base16-harmonic-dark.sh $HOME/.base16_theme
   fi
 fi
 
