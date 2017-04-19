@@ -69,7 +69,7 @@ if executable('rg')
   command! Search call MySearch()
   nnoremap \ :Search<CR>
   nnoremap K "ayiw :Search<CR><C-r>a<CR>
-  vnoremap K "ay :Search<CR><C-r>a<CR>
+  vnoremap K "ay :Search<CR>'<C-r>a'<CR>
 
   " Use rg in ctrlp
   let g:ctrlp_user_command = 'rg --ignore-file .gitignore --glob !.git --files-with-matches --follow --smart-case --threads 4 --hidden %s --regexp ""'
