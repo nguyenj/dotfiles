@@ -2,7 +2,7 @@
 
 set -e
 
-DOTFILES_ROOT=$(pwd -P)
+DOTFILES_BASH_ROOT=$(pwd -P)
 
 # git download base16 shell colors into ~/.config
 if [ ! -e $HOME/.config/base16-shell ]; then
@@ -18,7 +18,7 @@ fi
 # Symlink bashrc
 if [ ! -e $HOME/.bashrc ]; then
   echo "Linking .bashrc..."
-  ln -s $DOTFILES_ROOT/bash/bashrc $HOME/.bashrc
+  ln -s $DOTFILES_BASH_ROOT/bashrc $HOME/.bashrc
 fi
 
 # Setup tat for tmux
