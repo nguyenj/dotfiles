@@ -185,8 +185,8 @@ set title                           " set the title to the value of 'titlestring
 set showmode                        " shows the current mode
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
-set statusline+=%{fugitive#statusline()}\ 
-set statusline+=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline+=\ %{fugitive#statusline()}\ 
+set statusline+=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P\ 
 set number                          " enable line number
 set relativenumber
 set cursorline                      " highlight cursor line
