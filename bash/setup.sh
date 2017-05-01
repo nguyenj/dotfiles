@@ -21,12 +21,6 @@ if [ ! -e $HOME/.bashrc ]; then
   ln -s $DOTFILES_BASH_ROOT/bashrc $HOME/.bashrc
 fi
 
-# Setup tat for tmux
-if [ ! -e $HOME/.config/tat-master ]; then
-  echo "Installing tat for tmux"
-  curl -L https://github.com/ryandotsmith/tat/archive/master.tar.gz | tar xvf - -C $HOME/.config/
-fi
-
 # Setup matcher (vim ctrlp)
 if [ ! -e $HOME/.config/matcher-1.0.0 ]; then
   echo "Install matcher for vim ctrlp"

@@ -25,6 +25,10 @@ if [ -f "$HOME/.config/tat-master/tat.sh" ]; then
   export CODE_ROOT_DIRS="$HOME/Documents/projects:$CODE_ROOT_DIRS"
 fi
 
+if [ -f "$HOME/.config/tmux/bin/tmux" ]; then
+  export PATH="$HOME/.config/tmux/bin:$PATH"
+fi
+
 # Alias
 # git
 alias gf="git fetch origin"
