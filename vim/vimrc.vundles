@@ -22,6 +22,7 @@ call vundle#begin()
   " Utilities
   " --------------------
   Plugin 'tpope/vim-fugitive'             " git wrapper
+  Plugin 'tpope/vim-rhubarb'
   Plugin 'junegunn/gv.vim'                " git commit browser
   Plugin 'airblade/vim-gitgutter'
   Plugin 'godlygeek/tabular'              " align marked symbols
