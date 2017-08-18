@@ -140,6 +140,8 @@ autocmd VimResized * :wincmd =
 autocmd BufRead,BufNewFile *.hamlc set ft=haml
 " Support yaml front matter in markdown files
 autocmd BufNewFile,BufRead,BufWrite *.md,*.haml,*.html syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
+" Vim sometimes get confused when files include multiple languages
+autocmd FileType vue syntax sync fromstart
 
 autocmd BufNewFile,BufRead,BufWrite *nginx.conf* set ft=nginx
 
