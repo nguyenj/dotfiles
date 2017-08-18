@@ -36,6 +36,7 @@ call vundle#begin()
   " Syntax support and highlighting
   " --------------------
   Plugin 'editorconfig/editorconfig-vim'
+  Plugin 'nginx.vim'
 
   " CSS
   Plugin 'wavded/vim-stylus'
