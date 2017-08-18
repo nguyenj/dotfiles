@@ -192,7 +192,6 @@ set laststatus=2                    " always show status line
 set statusline+=\ %{fugitive#statusline()}\ 
 set statusline+=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P\ 
 set number                          " enable line number
-set relativenumber
 set cursorline                      " highlight cursor line
 set history=500
 set list                            " show spaces and tabs
@@ -202,12 +201,20 @@ set splitbelow                      " open new split panes to the bottom
 set visualbell                      " Set visual bell instad of a 'BEEP'
 set wildmenu
 
+function! ToggleNumber()
+	if(!&relativenumber && !&number)
+		set number
+	elseif(!&relativenumber)
+		set relativenumber
+	else
+		set norelativenumber
+	endif
+endfunc
+nnoremap <C-n> :call ToggleNumber()<cr>
+
 " --------------------
 " Text and display formatting
 " --------------------
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
 set shiftround
 set expandtab
 set autoindent
