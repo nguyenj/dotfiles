@@ -44,8 +44,6 @@ call vundle#begin()
 
   " JavaScript
   Plugin 'moll/vim-node'
-  Plugin 'othree/jsdoc-syntax.vim'
-  Plugin 'kchmck/vim-coffee-script'
   Plugin 'pangloss/vim-javascript'
   Plugin 'leafgarland/typescript-vim'
   Plugin 'posva/vim-vue'
