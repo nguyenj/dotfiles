@@ -213,4 +213,6 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+nnoremap <C-e> :Lexplore<cr>
+
 let g:netrw_localrmdir='rm -r'
