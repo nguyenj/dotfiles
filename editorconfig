@@ -7,7 +7,7 @@ end_of_line = lf
 insert_final_newline = true
 
 # Set default charset
-[*.{js,coffee,css,sass,scss}]
+[*.{rb,js,coffee,css,sass,scss}]
 charset = utf-8
 indent_style = space
 indent_size = 2
