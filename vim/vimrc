@@ -128,7 +128,7 @@ autocmd BufNewFile,BufRead,BufWrite *nginx.conf* set ft=nginx
 
 " CSS auto commands
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-" autocmd BufNewFile,BufRead *.scss,*.styl set ft=css
+autocmd BufNewFile,BufRead *.scss,*.styl set ft=css
 
 " Ruby auto commands
 autocmd Filetype ruby nmap <buffer> <Leader>de <S-o>require 'pry-remote';binding.remote_pry<Esc>
