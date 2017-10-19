@@ -164,13 +164,13 @@ set visualbell                      " Set visual bell instad of a 'BEEP'
 set wildmenu
 
 function! ToggleNumber()
-	if(!&relativenumber && !&number)
-		set number
-	elseif(!&relativenumber)
-		set relativenumber
-	else
-		set norelativenumber
-	endif
+  if(!&relativenumber && !&number)
+    set number
+  elseif(!&relativenumber)
+    set relativenumber
+  else
+    set norelativenumber
+  endif
 endfunc
 nnoremap <C-n> :call ToggleNumber()<cr>
 
