@@ -15,7 +15,7 @@ call vundle#begin()
   " --------------------
   " Fuzzy searching utilities
   " --------------------
-  Plugin 'junegunn/fzf'
+  Plugin 'junegunn/fzf.vim'
 
   " --------------------
   " Utilities
