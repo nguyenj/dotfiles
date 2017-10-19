@@ -17,6 +17,9 @@ runtime macros/matchit.vim          " activate matchit
 " --------------------
 " Plugin configurations
 " --------------------
+" fzf
+set rtp+=~/.fzf
+
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Plugin ctrlp

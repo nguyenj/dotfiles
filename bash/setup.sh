@@ -41,3 +41,10 @@ if [ ! -e $CONFIG_DIR/nvm ]; then
   git clone https://github.com/creationix/nvm.git $CONFIG_DIR/nvm
   cd $CONFIG_DIR/nvm && sh install.sh
 fi
+
+# Setup fzf
+if [ ! -e $HOME/.fzf ]; then
+  echo "Downloading fzf from github"
+  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+  $HOME/.fzf/install
+fi

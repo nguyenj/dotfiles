@@ -17,6 +17,7 @@ call vundle#begin()
   " --------------------
   Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'FelikZ/ctrlp-py-matcher'
+  Plugin 'junegunn/fzf'
 
   " --------------------
   " Utilities
