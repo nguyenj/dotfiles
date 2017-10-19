@@ -47,6 +47,7 @@ call vundle#begin()
   Plugin 'pangloss/vim-javascript'
   Plugin 'leafgarland/typescript-vim'
   Plugin 'posva/vim-vue'
+  Plugin 'vim-coffee-script'
 
   " Markup
   Plugin 'mattn/emmet-vim'
