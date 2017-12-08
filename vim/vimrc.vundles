@@ -57,7 +57,7 @@ call vundle#begin()
   " --------------------
   " Theme
   " --------------------
-  Plugin 'chriskempson/base16-vim'
+  Plugin 'NLKNguyen/papercolor-theme'
 
 call vundle#end()
 

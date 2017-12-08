@@ -15,9 +15,9 @@ if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
   source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
 fi
 
-# Setup base16 shell colorscheme
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# # Setup base16 shell colorscheme
+# BASE16_SHELL=$HOME/.config/base16-shell/
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 if [ -f "$HOME/.config/tat/tat.sh" ]; then
   source $HOME/.config/tat/tat.sh
