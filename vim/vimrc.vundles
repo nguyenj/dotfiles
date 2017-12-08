@@ -35,19 +35,12 @@ call vundle#begin()
   " Syntax support and highlighting
   " --------------------
   Plugin 'editorconfig/editorconfig-vim'
-  Plugin 'nginx.vim'
+  Plugin 'sheerun/vim-polyglot'
 
   " CSS
-  Plugin 'hail2u/vim-css3-syntax'
-  Plugin 'wavded/vim-stylus'
-  Plugin 'cakebaker/scss-syntax.vim'
 
   " JavaScript
   Plugin 'moll/vim-node'
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'leafgarland/typescript-vim'
-  Plugin 'posva/vim-vue'
-  Plugin 'vim-coffee-script'
 
   " Markup
   Plugin 'mattn/emmet-vim'
