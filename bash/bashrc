@@ -1,23 +1,23 @@
 # Set default editor to vim
 export EDITOR=vim
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --ignore-file .gitignore --glob !.git --files-with-matches --follow --smart-case --threads 4 --hidden --regexp ""'
+
 # rbenv init
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+  source $(brew --prefix)/etc/bash_completion
 fi
 
 # Bash git prompt
 if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR="$(brew --prefix bash-git-prompt)/share"
   GIT_PROMPT_THEME=Custom
   source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
 fi
-
-# # Setup base16 shell colorscheme
-# BASE16_SHELL=$HOME/.config/base16-shell/
-# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 if [ -f "$HOME/.config/tat/tat.sh" ]; then
   source $HOME/.config/tat/tat.sh
@@ -31,26 +31,13 @@ fi
 
 # Alias
 # git
-alias gf="git fetch origin"
-alias gs="git status"
-alias gc="git clone $1 $2"
-alias gca="git commit --amend"
-alias gci="git commit"
-alias gco="git checkout $1 $2"
-alias grh="git reset --hard $1"
 alias gsha="git rev-parse HEAD | tr -d '\n' | pbcopy && git rev-parse HEAD"
-
-# NPM
-alias ni="npm install"
-alias nis="npm install --save"
-alias nid="npm install --save-dev"
-alias nig="npm install --global"
-alias nr="npm run $1"
-alias ns="npm run start"
-alias nt="npm run test"
+alias glog="git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -"
 
 # Foreman
 alias f='bundle exec foreman start'
+
+alias wake='caffeinate -dimsut 7200'
 
 # NVM (node and npm version management)
 export NVM_DIR="$HOME/.nvm"
@@ -59,6 +46,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # Yarn (a faster npm alternaive)
 export PATH="$HOME/.yarn/bin:$PATH"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --ignore-file .gitignore --glob !.git --files-with-matches --follow --smart-case --threads 4 --hidden --regexp ""'
