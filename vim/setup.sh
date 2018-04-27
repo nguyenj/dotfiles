@@ -12,19 +12,7 @@ if [ ! -e $HOME/.vimrc ]; then
   fi
 
   echo "Setting up vim plugins directory"
-  mkdir -pv $DOTFILES_VIM_ROOT/vim/bundle
   if [ ! -d $HOME/.vim ]; then
     ln -s $DOTFILES_VIM_ROOT/vim $HOME/.vim
-  fi
-  if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
-    git clone git@github.com:gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-  fi
-
-  echo "Installing vim plugins"
-  vim +PluginInstall +PluginClean! +qall
-
-  if [ ! -e $HOME/.vimrc_background ]; then
-    echo "Setting up vim colorscheme"
-    ln -s $DOTFILES_VIM_ROOT/vimrc_background $HOME/.vimrc_background
   fi
 fi

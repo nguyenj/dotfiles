@@ -1,125 +1,13 @@
 set nocompatible                    " be iMproved, required
 set encoding=utf-8                  " set character encoding inside vim
 
-filetype off                        " required
-
-" --------------------
-" Plugins
-" --------------------
-if filereadable(expand("~/.dotfiles/vim/vimrc.vundles"))
-  source ~/.dotfiles/vim/vimrc.vundles
-endif
-
 syntax on                           " required for syntax highlighting
 filetype plugin indent on           " required
 runtime macros/matchit.vim          " activate matchit
 
 " --------------------
-" Plugin configurations
+" Functions
 " --------------------
-" fzf
-set rtp+=~/.fzf
-
-" editorconfig
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-" ripgrep
-if executable('rg')
-  set grepprg=rg\ --vimgrep\ --no-heading
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
-  function! MySearch()
-    let grep_term = input("Enter search term: ")
-    if !empty(grep_term)
-      execute 'silent grep!' grep_term | copen
-    else
-      echo "Empty search term"
-    endif
-    redraw!
-  endfunction
-  command! Search call MySearch()
-  nnoremap \ :Search<CR>
-  nnoremap K "ayiw :Search<CR><C-r>a<CR>
-  vnoremap K "ay :Search<CR>'<C-r>a'<CR>
-
-  command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-    \   <bang>0 ? fzf#vim#with_preview('up:60%')
-    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \ <bang>0)
-endif
-
-" --------------------
-" Key bindings
-" --------------------
-let mapleader = "\<Space>"          " Map the leader to spacebar rather than \
-nmap <leader>vr :tabedit $MYVIMRC<cr>
-nmap <leader>vb :tabedit $HOME/.dotfiles/vim/vimrc.vundles<cr>
-nnoremap <C-p> :FZF<cr>
-nnoremap <leader>h :nohlsearch<cr>
-imap <C-l> <C-x><C-l>
-
-" --------------------
-" Basic configurations
-" --------------------
-set mouse=a                         " Enable mouse support
-set hidden
-set noswapfile                      " Don't create swap file
-set nobackup                        " Don't create backup files
-set diffopt=vertical
-set clipboard=unnamed               " Yank to system clipboard
-set noerrorbells                    " Turn off the bell
-set backspace=indent,eol,start      " allow backspacing over everything
-
-" set completeopt=longest,menuone,preview
-
-" Plugin Dispatch
-" Run rspec test
-nnoremap <leader>s :Dispatch bin/rspec <c-r>=expand("%:p")<cr>:<c-r>=line(".")<cr> --format doc --color<cr>
-nnoremap <leader>S :Dispatch bin/rspec <c-r>=expand("%:p")<cr> --format doc --color<cr>
-set shellpipe+=\ 
-
-" reload vimrc
-nmap <leader>so :source $MYVIMRC<cr>
-
-" Bind `q` to close quickfix window
-autocmd BufReadPost quickfix nnoremap <buffer> q :q <CR>
-autocmd BufReadPost quickfix nnoremap <silent> <buffer> h  <C-W><CR><C-w>K
-autocmd BufReadPost quickfix noremap <silent> <buffer> H  <C-W><CR><C-w>K<C-w>b
-autocmd BufReadPost quickfix noremap <silent> <buffer> o  <CR>
-autocmd BufReadPost quickfix noremap <silent> <buffer> t  <C-w><CR><C-w>T
-autocmd BufReadPost quickfix noremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
-autocmd BufReadPost quickfix noremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
-" Bind `q` to close the buffer for help files
-autocmd Filetype help nnoremap <buffer> q :q<cr>
-" automatically rebalance windows on vim resize
-autocmd VimResized * :wincmd =
-" Support hamlc syntax, because it's basically haml
-autocmd BufRead,BufNewFile *.hamlc set ft=haml
-" Support yaml front matter in markdown files
-autocmd BufNewFile,BufRead,BufWrite *.md,*.haml,*.html syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
-" Vim sometimes get confused when files include multiple languages
-autocmd FileType vue syntax sync fromstart
-
-autocmd BufNewFile,BufRead,BufWrite *nginx.conf* set ft=nginx
-
-" CSS auto commands
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd BufNewFile,BufRead *.scss,*.styl set ft=css
-
-" Ruby auto commands
-autocmd Filetype ruby nmap <buffer> <Leader>de <S-o>require 'pry-remote';binding.remote_pry<Esc>
-
-" Javascript auto commands
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd Filetype javascript,coffee,typescript nmap <buffer> <Leader>de <S-o>debugger<Esc>
-
-" Upon saving a file in a new directory, create the directory if it does not
-" exist on confirmation.
-augroup ensure_directory_exists
-  autocmd!
-  autocmd BufNewFile * call s:EnsureDirectoryExists()
-augroup end
 function! s:EnsureDirectoryExists()
   let required_dir = expand("%:h")
 
@@ -137,6 +25,147 @@ function! s:EnsureDirectoryExists()
   endif
 endfunction
 
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+function! ToggleNumber()
+  if(!&relativenumber && !&number)
+    set number
+  elseif(!&relativenumber)
+    set relativenumber
+  else
+    set norelativenumber
+  endif
+endfunction
+
+" --------------------
+" Plugin configurations
+" --------------------
+" fzf
+set rtp+=~/.fzf
+
+" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" ripgrep
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading\ --sort-files
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+  function! MySearch()
+    let grep_term = input("Enter search term: ")
+    if !empty(grep_term)
+      execute 'silent grep!' grep_term | copen
+    else
+      echo "Empty search term"
+    endif
+    redraw!
+  endfunction
+  command! Search call MySearch()
+  nnoremap \ :Search<CR>
+
+  augroup global_search
+    autocmd!
+    autocmd Filetype * if &ft!="git"|nnoremap K "ayiw :Search<CR><C-r>a<CR>|endif
+    autocmd Filetype * if &ft!="git"|vnoremap K "ay :Search<CR>'<C-r>a'<CR>|endif
+  augroup end
+endif
+
+" --------------------
+" Key bindings
+" --------------------
+let mapleader = "\<Space>"          " Map the leader to spacebar rather than \
+nmap <leader>vr :tabedit $MYVIMRC<cr>
+nmap <leader>vb :tabedit $HOME/.dotfiles/vim/vimrc.vundles<cr>
+nnoremap <C-p> :GFiles<cr>
+nnoremap <leader>o :Files<cr>
+nnoremap <leader>h :nohlsearch<cr>
+imap <C-l> <C-x><C-l>
+noremap <leader>n :cnext<C-m>
+noremap <leader>p :cprev<C-m>
+nnoremap <C-n> :call ToggleNumber()<cr>
+" Switching panes
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" --------------------
+" Basic configurations
+" --------------------
+set mouse=a                         " Enable mouse support
+set hidden
+set noswapfile                      " Don't create swap file
+set nobackup                        " Don't create backup files
+set diffopt=vertical
+set clipboard=unnamed               " Yank to system clipboard
+set noerrorbells                    " Turn off the bell
+set backspace=indent,eol,start      " allow backspacing over everything
+
+" set completeopt=longest,menuone,preview
+
+" reload vimrc
+nmap <leader>so :source $MYVIMRC<cr>
+
+" Bind `q` to close quickfix window
+augroup quickfix_key_bindings
+  autocmd!
+  autocmd BufReadPost quickfix nnoremap <buffer> q :q <CR>
+  autocmd BufReadPost quickfix nnoremap <silent> <buffer> h  <C-W><CR><C-w>K
+  autocmd BufReadPost quickfix noremap <silent> <buffer> H  <C-W><CR><C-w>K<C-w>b
+  autocmd BufReadPost quickfix noremap <silent> <buffer> o  <CR>
+  autocmd BufReadPost quickfix noremap <silent> <buffer> t  <C-w><CR><C-w>T
+  autocmd BufReadPost quickfix noremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
+  autocmd BufReadPost quickfix noremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
+  " Bind `q` to close the buffer for help files
+  autocmd Filetype help nnoremap <buffer> q :q<cr>
+augroup end
+
+" automatically rebalance windows on vim resize
+augroup vim_resizing_key_bindings
+  autocmd!
+  autocmd VimResized * :wincmd =
+augroup end
+
+" Support yaml front matter in markdown files
+augroup markdown
+  autocmd!
+  autocmd BufNewFile,BufRead,BufWrite *.md,*.haml,*.html syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
+augroup end
+
+augroup nginx
+  autocmd!
+  autocmd BufNewFile,BufRead,BufWrite *nginx.conf* set ft=nginx
+augroup end
+
+let tern_show_signature_in_pum = 1
+let tern_show_argument_hints = 'on_hold'
+augroup javascript_auto_cmds
+  autocmd!
+  autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+  autocmd FileType javascript nnoremap <leader>r :TernRefs<CR>
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+augroup end
+
+" CSS auto commands
+augroup css_auto_cmds
+  autocmd!
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  autocmd BufNewFile,BufRead *.scss,*.styl set ft=css
+augroup end
+
+" Upon saving a file in a new directory, create the directory if it does not
+" exist on confirmation.
+augroup ensure_directory_exists
+  autocmd!
+  autocmd BufNewFile * call s:EnsureDirectoryExists()
+augroup end
+
 " --------------------
 " GUI configurations
 " --------------------
@@ -147,9 +176,20 @@ set title                           " set the title to the value of 'titlestring
 set showmode                        " shows the current mode
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
-set statusline+=\ %{fugitive#statusline()}\ 
-set statusline+=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P\ 
-" set number                          " enable line number
+set statusline=
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\ %<%f
+set statusline+=%m
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
+set number                          " enable line number
 set relativenumber                  " enable relative line number
 set cursorline                      " highlight cursor line
 set history=500
@@ -159,17 +199,6 @@ set splitright                      " open new vertical split panes to right
 set splitbelow                      " open new split panes to the bottom
 set visualbell                      " Set visual bell instad of a 'BEEP'
 set wildmenu
-
-function! ToggleNumber()
-  if(!&relativenumber && !&number)
-    set number
-  elseif(!&relativenumber)
-    set relativenumber
-  else
-    set norelativenumber
-  endif
-endfunc
-nnoremap <C-n> :call ToggleNumber()<cr>
 
 " --------------------
 " Text and display formatting
@@ -189,14 +218,6 @@ set wrap                            " wrap line when lines are longer than the w
 " --------------------
 " Visual display
 " --------------------
-set background=dark
+set t_Co=256
+set background=light
 colorscheme PaperColor
-" if filereadable(expand("~/.vimrc_background"))
-"   set background=light
-"   let base16colorspace=16
-"   source ~/.vimrc_background
-" endif
-
-nnoremap <C-e> :Lexplore<cr>
-
-let g:netrw_localrmdir='rm -r'
