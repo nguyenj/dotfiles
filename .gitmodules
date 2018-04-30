@@ -22,3 +22,6 @@
 [submodule "vim/vim/pack/plugins/start/vim-vue.vim"]
 	path = vim/vim/pack/plugins/start/vim-vue.vim
 	url = git@github.com:posva/vim-vue.git
+[submodule "vim/vim/pack/plugins/start/vim-fugitive.vim"]
+	path = vim/vim/pack/plugins/start/vim-fugitive.vim
+	url = git@github.com:tpope/vim-fugitive.git
