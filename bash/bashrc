@@ -34,11 +34,6 @@ fi
 alias gsha="git rev-parse HEAD | tr -d '\n' | pbcopy && git rev-parse HEAD"
 alias glog="git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -"
 
-# Foreman
-alias f='bundle exec foreman start'
-
-alias wake='caffeinate -dimsut 7200'
-
 # NVM (node and npm version management)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

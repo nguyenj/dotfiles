@@ -187,7 +187,7 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
-set statusline+=\ 
+set statusline+=\ " Whitespace is needed
 set number                          " enable line number
 set relativenumber                  " enable relative line number
 set cursorline                      " highlight cursor line
