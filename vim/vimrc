@@ -201,8 +201,8 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ " Whitespace is needed
 set number                          " enable line number
-set relativenumber                  " enable relative line number
-set cursorline                      " highlight cursor line
+" set relativenumber                  " enable relative line number
+" set cursorline                      " highlight cursor line
 set history=500
 set list                            " show spaces and tabs
 set listchars=tab:»·,trail:·,nbsp:· " string represented in `list`
@@ -232,3 +232,4 @@ set wrap                            " wrap line when lines are longer than the w
 set t_Co=256
 set background=light
 colorscheme PaperColor
+syntax sync minlines=256
