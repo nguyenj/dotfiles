@@ -34,6 +34,15 @@ function! StatuslineGit()
   return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
 
+function! GetFugitiveStatusLine() abort
+	let l:git_branch = fugitive#head()
+	if strlen(l:git_branch) > 0
+		return '  '.l:git_branch.' '
+	else
+		return ''
+	end
+endfunction
+
 function! ToggleNumber()
   if(!&relativenumber && !&number)
     set number
@@ -176,7 +185,10 @@ set showmode                        " shows the current mode
 set showcmd                         " show the current command
 set laststatus=2                    " always show status line
 set statusline=
-set statusline+=%{StatuslineGit()}
+" set statusline+=%{fugitive#statusline()}
+" set statusline+=%{StatuslineGit()}
+" set statusline+=%{b:gitstatus}
+set statusline+=%{GetFugitiveStatusLine()}
 set statusline+=%#LineNr#
 set statusline+=\ %<%f
 set statusline+=%m
