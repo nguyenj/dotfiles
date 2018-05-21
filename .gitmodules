@@ -28,3 +28,12 @@
 [submodule "vim/vim/pack/plugins/start/tcomment_vim.vim"]
 	path = vim/vim/pack/plugins/start/tcomment_vim.vim
 	url = git@github.com:tomtom/tcomment_vim.git
+[submodule "vim/vim/pack/plugins/start/vim-rhubarb.vim"]
+	path = vim/vim/pack/plugins/start/vim-rhubarb.vim
+	url = git@github.com:tpope/vim-rhubarb.git
+[submodule "vim/vim/pack/plugins/start/nord.vim"]
+	path = vim/vim/pack/plugins/start/nord.vim
+	url = git@github.com:arcticicestudio/nord-vim.git
+[submodule "vim/vim/pack/plugins/start/vim-javascript.vim"]
+	path = vim/vim/pack/plugins/start/vim-javascript.vim
+	url = git@github.com:pangloss/vim-javascript.git
