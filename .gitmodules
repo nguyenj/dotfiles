@@ -37,3 +37,6 @@
 [submodule "vim/vim/pack/plugins/start/vim-javascript.vim"]
 	path = vim/vim/pack/plugins/start/vim-javascript.vim
 	url = git@github.com:pangloss/vim-javascript.git
+[submodule "vim/vim/pack/plugins/start/nord"]
+	path = vim/vim/pack/plugins/start/nord
+	url = https://github.com/arcticicestudio/nord-vim.git
