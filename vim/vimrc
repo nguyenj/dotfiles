@@ -230,6 +230,5 @@ set wrap                            " wrap line when lines are longer than the w
 " Visual display
 " --------------------
 set t_Co=256
-set background=light
-colorscheme PaperColor
+colorscheme nord
 syntax sync minlines=256
