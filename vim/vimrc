@@ -58,6 +58,7 @@ endfunction
 " --------------------
 " fzf
 set rtp+=~/.fzf
+nnoremap <C-p> :FZF<cr>
 
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
@@ -90,7 +91,6 @@ endif
 " --------------------
 let mapleader = "\<Space>"          " Map the leader to spacebar rather than \
 nmap <leader>vr :tabedit $MYVIMRC<cr>
-nnoremap <C-p> :GFiles<cr>
 nnoremap <leader>o :Files<cr>
 nnoremap <leader>h :nohlsearch<cr>
 imap <C-l> <C-x><C-l>
