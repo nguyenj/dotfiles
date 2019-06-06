@@ -111,7 +111,7 @@ set hidden
 set noswapfile                      " Don't create swap file
 set nobackup                        " Don't create backup files
 set diffopt=vertical
-set clipboard=unnamed               " Yank to system clipboard
+set clipboard=unnamedplus               " Yank to system clipboard
 set noerrorbells                    " Turn off the bell
 set backspace=indent,eol,start      " allow backspacing over everything
 
