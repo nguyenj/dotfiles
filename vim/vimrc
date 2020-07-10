@@ -1,7 +1,8 @@
 set nocompatible                    " be iMproved, required
 set encoding=utf-8                  " set character encoding inside vim
-
+set regexpengine=1
 syntax on                           " required for syntax highlighting
+" syntax off                           " required for syntax highlighting
 filetype plugin indent on           " required
 runtime macros/matchit.vim          " activate matchit
 
@@ -62,6 +63,14 @@ endfunction
 " This setting must be set before ALE is loaded.
 let g:ale_completion_enabled = 1
 let b:ale_set_balloons = 1
+let g:ale_completion_tsserver_autoimport = 1
+set omnifunc=ale#completion#OmniFunc
+
+" typescript-vim
+" let g:typescript_indent_disable = 1
+
+" tsuquyomi
+let g:tsuquyomi_completion_detail = 1
 
 " fzf
 set rtp+=~/.fzf
@@ -118,12 +127,13 @@ set mouse=a                         " Enable mouse support
 set hidden
 set noswapfile                      " Don't create swap file
 set nobackup                        " Don't create backup files
-set diffopt=vertical
-set clipboard=unnamedplus               " Yank to system clipboard
+" set diffopt=vertical
+set diffopt+=vertical
+set clipboard=unnamed               " Yank to system clipboard
 set noerrorbells                    " Turn off the bell
 set backspace=indent,eol,start      " allow backspacing over everything
 
-" set completeopt=longest,menuone,preview
+set completeopt=menu,longest,menuone,preview,noselect,noinsert
 
 " reload vimrc
 nmap <leader>so :source $MYVIMRC<cr>
@@ -159,20 +169,14 @@ augroup nginx
   autocmd BufNewFile,BufRead,BufWrite *nginx.conf* set ft=nginx
 augroup end
 
-let tern_show_signature_in_pum = 1
-let tern_show_argument_hints = 'on_hold'
-augroup javascript_auto_cmds
-  autocmd!
-  autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
-  autocmd FileType javascript nnoremap <leader>r :TernRefs<CR>
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-augroup end
-
 " CSS auto commands
 augroup css_auto_cmds
   autocmd!
-  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
   autocmd BufNewFile,BufRead *.scss,*.styl set ft=css
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType css setlocal includeexpr+=substitute(v:fname,'^\\~','node_modules/','')
+  autocmd FileType css setlocal suffixesadd=.sass,.scss,.css
+  autocmd FileType css setlocal iskeyword+=-
 augroup end
 
 " Upon saving a file in a new directory, create the directory if it does not
@@ -209,7 +213,7 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ " Whitespace is needed
 set number                          " enable line number
-" set relativenumber                  " enable relative line number
+set relativenumber                  " enable relative line number
 " set cursorline                      " highlight cursor line
 set history=500
 set list                            " show spaces and tabs
@@ -238,7 +242,9 @@ set wrap                            " wrap line when lines are longer than the w
 " Visual display
 " --------------------
 set t_Co=256
-syntax sync minlines=256
+" syntax sync minlines=256
+" set background=dark
+colorscheme PaperColor
 
 " --------------------
 " Generate help files
@@ -251,12 +257,12 @@ packloadall
 silent! helptags ALL
 
 function! TmuxMove(direction)
-        let wnr = winnr()
-        silent! execute 'wincmd ' . a:direction
-        " If the winnr is still the same after we moved, it is the last pane
-        if wnr == winnr()
-                call system('tmux select-pane -' . tr(a:direction, 'phjkl', 'lLDUR'))
-        end
+  let wnr = winnr()
+  silent! execute 'wincmd ' . a:direction
+  " If the winnr is still the same after we moved, it is the last pane
+  if wnr == winnr()
+    call system('tmux select-pane -' . tr(a:direction, 'phjkl', 'lLDUR'))
+  end
 endfunction
 
 nnoremap <silent> <c-h> :call TmuxMove('h')<cr>
