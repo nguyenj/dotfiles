@@ -1,3 +1,6 @@
 [submodule "vim/plugins/fugitive"]
 	path = vim/plugins/fugitive
 	url = git@github.com:tpope/vim-fugitive.git
+[submodule "vim/plugins/papercolor"]
+	path = vim/plugins/papercolor
+	url = git@github.com:NLKNguyen/papercolor-theme.git
