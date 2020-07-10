@@ -37,3 +37,6 @@
 [submodule "vim/vim/pack/plugins/start/vim-node.git"]
 	path = vim/vim/pack/plugins/start/vim-node.git
 	url = https://github.com/moll/vim-node.git
+[submodule "vim/vim/pack/plugins/start/typescript-vim.git"]
+	path = vim/vim/pack/plugins/start/typescript-vim.git
+	url = git@github.com:leafgarland/typescript-vim.git
