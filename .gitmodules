@@ -10,9 +10,6 @@
 [submodule "vim/vim/pack/plugins/start/ale.vim"]
 	path = vim/vim/pack/plugins/start/ale.vim
 	url = git@github.com:w0rp/ale.git
-[submodule "vim/vim/pack/plugins/start/vim-coffee-script.vim"]
-	path = vim/vim/pack/plugins/start/vim-coffee-script.vim
-	url = git@github.com:kchmck/vim-coffee-script.git
 [submodule "vim/vim/pack/plugins/start/vim-vue.vim"]
 	path = vim/vim/pack/plugins/start/vim-vue.vim
 	url = git@github.com:posva/vim-vue.git
