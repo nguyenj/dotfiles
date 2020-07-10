@@ -59,6 +59,7 @@ endfunction
 " fzf
 set rtp+=~/.fzf
 nnoremap <C-p> :FZF<cr>
+nnoremap <C-f> :GFiles<cr>
 
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
