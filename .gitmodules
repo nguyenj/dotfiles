@@ -4,3 +4,6 @@
 [submodule "vim/plugins/papercolor"]
 	path = vim/plugins/papercolor
 	url = git@github.com:NLKNguyen/papercolor-theme.git
+[submodule "vim/plugins/editorconfig"]
+	path = vim/plugins/editorconfig
+	url = git@github.com:editorconfig/editorconfig-vim.git
