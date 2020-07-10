@@ -56,6 +56,13 @@ endfunction
 " --------------------
 " Plugin configurations
 " --------------------
+
+" ale
+" Enable completion where available.
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
+let b:ale_set_balloons = 1
+
 " fzf
 set rtp+=~/.fzf
 nnoremap <C-p> :FZF<cr>
@@ -232,3 +239,27 @@ set wrap                            " wrap line when lines are longer than the w
 " --------------------
 set t_Co=256
 syntax sync minlines=256
+
+" --------------------
+" Generate help files
+" --------------------
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
+
+function! TmuxMove(direction)
+        let wnr = winnr()
+        silent! execute 'wincmd ' . a:direction
+        " If the winnr is still the same after we moved, it is the last pane
+        if wnr == winnr()
+                call system('tmux select-pane -' . tr(a:direction, 'phjkl', 'lLDUR'))
+        end
+endfunction
+
+nnoremap <silent> <c-h> :call TmuxMove('h')<cr>
+nnoremap <silent> <c-j> :call TmuxMove('j')<cr>
+nnoremap <silent> <c-k> :call TmuxMove('k')<cr>
+nnoremap <silent> <c-l> :call TmuxMove('l')<cr>
