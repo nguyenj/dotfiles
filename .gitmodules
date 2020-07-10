@@ -40,3 +40,6 @@
 [submodule "vim/vim/pack/plugins/start/typescript-vim.git"]
 	path = vim/vim/pack/plugins/start/typescript-vim.git
 	url = git@github.com:leafgarland/typescript-vim.git
+[submodule "vim/vim/pack/plugins/start/papercolor-theme.git"]
+	path = vim/vim/pack/plugins/start/papercolor-theme.git
+	url = git@github.com:NLKNguyen/papercolor-theme.git
