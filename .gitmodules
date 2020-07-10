@@ -7,3 +7,6 @@
 [submodule "vim/plugins/editorconfig"]
 	path = vim/plugins/editorconfig
 	url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule "vim/plugins/fzf"]
+	path = vim/plugins/fzf
+	url = git@github.com:junegunn/fzf.vim.git
