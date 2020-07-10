@@ -13,3 +13,6 @@
 [submodule "vim/plugins/coc"]
 	path = vim/plugins/coc
 	url = git@github.com:neoclide/coc.nvim.git
+[submodule "vim/plugins/node"]
+	path = vim/plugins/node
+	url = git@github.com:moll/vim-node.git
