@@ -22,9 +22,9 @@
 [submodule "vim/vim/pack/plugins/start/vim-rhubarb.vim"]
 	path = vim/vim/pack/plugins/start/vim-rhubarb.vim
 	url = git@github.com:tpope/vim-rhubarb.git
-[submodule "vim/vim/pack/plugins/start/vim-javascript.vim"]
-	path = vim/vim/pack/plugins/start/vim-javascript.vim
-	url = git@github.com:pangloss/vim-javascript.git
 [submodule "vim/vim/pack/plugins/start/rhubarb"]
 	path = vim/vim/pack/plugins/start/rhubarb
 	url = git@github.com:tpope/vim-rhubarb.git
+[submodule "vim/vim/pack/plugins/start/vim-javascript.git"]
+	path = vim/vim/pack/plugins/start/vim-javascript.git
+	url = https://github.com/pangloss/vim-javascript.git
