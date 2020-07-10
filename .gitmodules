@@ -10,3 +10,6 @@
 [submodule "vim/plugins/fzf"]
 	path = vim/plugins/fzf
 	url = git@github.com:junegunn/fzf.vim.git
+[submodule "vim/plugins/coc"]
+	path = vim/plugins/coc
+	url = git@github.com:neoclide/coc.nvim.git
