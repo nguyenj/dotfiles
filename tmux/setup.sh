@@ -1,25 +1,38 @@
 #!/bin/bash
 
+# When one command fails, exit immediately
 set -e
 
-DOTFILES_BASH_ROOT=$(pwd -P)
+# Ensure that variables are set, exit immediately otherwise
+set -u
 
-# Setup tmux
-if [ ! -e $HOME/.config/tmux ]; then
-  echo "Installing tmux"
-  cd $HOME/.config
-  git clone https://github.com/tmux/tmux.git
-  cd tmux
-  sh autogen.sh
+# Disable file globbing
+set -f
+
+# Let the pipe know if there's a failure
+set -o pipefail
+
+DOTFILES_TMUX_ROOT=$(cd `dirname $0` && pwd)
+
+# Ensure tmux program exists
+if ! command -v tmux &> /dev/null; then
+  echo "    Downloading tmux v3"
+  mkdir -p $CONFIG_ROOT/tmux
+  cd $CONFIG_ROOT/tmux
+  curl --location https://github.com/tmux/tmux/releases/download/3.0/tmux-3.0.tar.gz \
+    --progress-bar \
+    | \
+    tar xz
+
+  echo "    Building tmux"
+  cd $CONFIG_ROOT/tmux/tmux-3.0
   ./configure && make
-  mkdir -p bin
-  mv tmux ./bin
+  make install
 fi
 
-cd $DOTFILES_BASH_ROOT
-
-# Setup tat for tmux
-if [ ! -e $HOME/.config/tat-master ]; then
-  echo "Installing tat for tmux"
-  curl -L https://github.com/ryandotsmith/tat/archive/master.tar.gz | tar xvf - -C $HOME/.config/
+# Check if .tmux.conf file exist
+if [ ! -e $HOME/.tmux.conf ]; then
+  # Create a symbolic link at .vimrc -> vimrc
+  echo "Creating a symbolic link for .tmux.conf"
+  ln -sf $DOTFILES_TMUX_ROOT/tmux.conf $HOME/.tmux.conf
 fi

@@ -14,11 +14,23 @@ set -o pipefail
 
 DOTFILES_ROOT=$(cd `dirname $0` && pwd)
 
+# Ensure $HOME/.config exists
+if [ ! -d $HOME/.config ]; then
+  echo "    Creating .config directory"
+  mkdir -p $HOME/.config
+fi
+
+CONFIG_ROOT=$HOME/.config
+
+# Setup vim
 sh $DOTFILES_ROOT/vim/setup.sh
 
 # Set .editorconfig globally
 # Check if .editorconfig exist
 if [ ! -e $HOME/.editorconfig ]; then
-  echo "Creating a symbolic link for .editorconfig"
+  echo "    Creating a symbolic link for .editorconfig"
   ln -sf $DOTFILES_ROOT/.editorconfig $HOME/.editorconfig
 fi
+
+# Setup tmux
+sh $DOTFILES_ROOT/tmux/setup.sh
