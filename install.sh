@@ -1,34 +1,17 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-DOTFILES_ROOT=$(pwd -P)
+# When one command fails, exit immediately
+set -e
 
-# setup homebrew
-cd $DOTFILES_ROOT/homebrew
-sh brew.sh
+# Ensure that variables are set, exit immediately otherwise
+set -u
 
-# setup ctags
-if [ ! -e $HOME/.ctags ]; then
-  echo "Linking .ctags..."
-  ln -s $DOTFILES_ROOT/ctags/ctags $HOME/.ctags
-fi
+# Disable file globbing
+set -f
 
-# setup tmux
-if [ ! -e $HOME/.tmux.conf ]; then
-  echo "Linking .tmux.conf..."
-  ln -s $DOTFILES_ROOT/tmux/tmux.conf $HOME/.tmux.conf
-fi
+# Let the pipe know if there's a failure
+set -o pipefail
 
-# # setup git config
-# echo "Setting up git"
-# ln -s $DOTFILES_ROOT/gitconfig ~/.gitconfig
-# ln -s $DOTFILES_ROOT/gitignore ~/.gitignore
-# ln -s $DOTFILES_ROOT/git-prompt-colors ~/.git-prompt-colors.sh
-# ln -s $DOTFILES_ROOT/git_diff_wrapper.sh ~/.git_diff_wrapper.sh
-# 
-# # setup silversearch ignore file (ag)
-# echo "Setting up ag"
-# ln -s $DOTFILES_ROOT/agignore ~/.agignore
-# 
-# # setup bash config
-# echo "Setting up bash"
-# ln -s $DOTFILES_ROOT/inputrc ~/.inputrc
+DOTFILES_ROOT=$(cd `dirname $0` && pwd)
+
+sh $DOTFILES_ROOT/vim/setup.sh
