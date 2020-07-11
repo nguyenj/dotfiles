@@ -241,7 +241,6 @@ set wrap                            " wrap line when lines are longer than the w
 " --------------------
 " Visual display
 " --------------------
-set t_Co=256
 " syntax sync minlines=256
 " set background=dark
 colorscheme PaperColor
