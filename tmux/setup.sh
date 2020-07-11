@@ -10,12 +10,13 @@ set -u
 set -f
 
 # Let the pipe know if there's a failure
-set -o pipefail
+# set -o pipefail
 
 DOTFILES_TMUX_ROOT=$(cd `dirname $0` && pwd)
+CONFIG_ROOT=$HOME/.config
 
 # Ensure tmux program exists
-if ! command -v tmux &> /dev/null; then
+if ! [ -x "$(command -v tmux)" ]; then
   echo "    Downloading tmux v3"
   mkdir -p $CONFIG_ROOT/tmux
   cd $CONFIG_ROOT/tmux
