@@ -10,7 +10,7 @@ set -u
 set -f
 
 # Let the pipe know if there's a failure
-set -o pipefail
+# set -o pipefail
 
 DOTFILES_ROOT=$(cd `dirname $0` && pwd)
 
