@@ -16,3 +16,6 @@
 [submodule "vim/plugins/node"]
 	path = vim/plugins/node
 	url = https://github.com/moll/vim-node.git
+[submodule "vim/plugins/typescript-vim"]
+	path = vim/plugins/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
