@@ -57,21 +57,6 @@ endfunction
 " --------------------
 " Plugin configurations
 " --------------------
-
-" ale
-" Enable completion where available.
-" This setting must be set before ALE is loaded.
-let g:ale_completion_enabled = 1
-let b:ale_set_balloons = 1
-let g:ale_completion_tsserver_autoimport = 1
-set omnifunc=ale#completion#OmniFunc
-
-" typescript-vim
-" let g:typescript_indent_disable = 1
-
-" tsuquyomi
-let g:tsuquyomi_completion_detail = 1
-
 " fzf
 set rtp+=~/.fzf
 nnoremap <C-p> :FZF<cr>
@@ -79,6 +64,10 @@ nnoremap <C-f> :GFiles<cr>
 
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+
+let g:typescript_indent_disable = 1
 
 " ripgrep
 if executable('rg')
