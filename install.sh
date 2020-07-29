@@ -34,3 +34,9 @@ fi
 
 # Setup tmux
 sh $DOTFILES_ROOT/tmux/setup.sh
+
+# Set .inputrc globally
+if [ ! -e $HOME/.inputrc ]; then
+  echo "    Creating a symbolic link for .inputrc"
+  ln -sf $DOTFILES_ROOT/inputrc $HOME/.inputrc
+fi
