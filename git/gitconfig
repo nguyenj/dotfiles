@@ -16,8 +16,10 @@
   editor = vim
   excludesfile = ~/.gitignore
 [merge]
-  tool = vimdiff
-[difftool]
-  external = ~/.git_diff_wrapper.sh¬
-  tool = vimdiff¬
-  prompt = false¬
+  tool = fugitive
+[pull]
+  rebase = true
+[mergetool "fugitive"]
+  cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+[init]
+  defaultBranch = main

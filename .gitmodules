@@ -4,9 +4,6 @@
 [submodule "vim/plugins/papercolor"]
 	path = vim/plugins/papercolor
 	url = https://github.com/NLKNguyen/papercolor-theme.git
-[submodule "vim/plugins/editorconfig"]
-	path = vim/plugins/editorconfig
-	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "vim/plugins/fzf"]
 	path = vim/plugins/fzf
 	url = https://github.com/junegunn/fzf.vim.git
@@ -19,3 +16,12 @@
 [submodule "vim/plugins/typescript-vim"]
 	path = vim/plugins/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "vim/plugins/vim-commentary"]
+	path = vim/plugins/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/plugins/vim-rhubarb"]
+	path = vim/plugins/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
+[submodule "vim/plugins/editorconfig"]
+	path = vim/plugins/editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim.git

@@ -1,6 +1,6 @@
 set nocompatible                    " be iMproved, required
 set encoding=utf-8                  " set character encoding inside vim
-set regexpengine=1
+" set regexpengine=1
 syntax on                           " required for syntax highlighting
 " syntax off                           " required for syntax highlighting
 filetype plugin indent on           " required
@@ -55,44 +55,6 @@ function! ToggleNumber()
 endfunction
 
 " --------------------
-" Plugin configurations
-" --------------------
-" fzf
-set rtp+=~/.fzf
-nnoremap <C-p> :FZF<cr>
-nnoremap <C-f> :GFiles<cr>
-
-" editorconfig
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-let g:coc_global_extensions = [ 'coc-tsserver' ]
-
-let g:typescript_indent_disable = 1
-
-" ripgrep
-if executable('rg')
-  set grepprg=rg\ --vimgrep\ --no-heading\ --sort-files
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
-  function! MySearch()
-    let grep_term = input("Enter search term: ")
-    if !empty(grep_term)
-      execute 'silent grep!' grep_term | copen
-    else
-      echo "Empty search term"
-    endif
-    redraw!
-  endfunction
-  command! Search call MySearch()
-  nnoremap \ :Search<CR>
-
-  augroup global_search
-    autocmd!
-    autocmd Filetype * if &ft!="git"|nnoremap K "ayiw :Search<CR><C-r>a<CR>|endif
-    autocmd Filetype * if &ft!="git"|vnoremap K "ay :Search<CR>'<C-r>a'<CR>|endif
-  augroup end
-endif
-
-" --------------------
 " Key bindings
 " --------------------
 let mapleader = "\<Space>"          " Map the leader to spacebar rather than \
@@ -110,6 +72,69 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " --------------------
+" Plugin configurations
+" --------------------
+
+let g:coc_global_extensions = ['coc-solargraph']
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" fzf
+set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow\ --no-heading\ --sort-files
+set rtp+=/usr/local/opt/fzf
+nnoremap <C-p> :Files<cr>
+nnoremap <C-f> :GFiles<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>l :BLines<cr>
+nnoremap \ :Rg<cr>
+nnoremap K "ayiw :Rg <C-r>a<cr>
+vnoremap K "ay :Rg <C-r>a<CR>
+
+" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" coc
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+" coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+let g:LanguageClient_serverCommands = {
+      \ 'vue': ['vls']
+      \ }
+
+let g:typescript_indent_disable = 1
+
+" ripgrep
+if executable('rg')
+  " set grepprg=rg\ --vimgrep\ --no-heading\ --sort-files
+  " set grepformat=%f:%l:%c:%m,%f:%l:%m
+  " function! MySearch()
+  "   let grep_term = input("Enter search term: ")
+  "   if !empty(grep_term)
+  "     execute 'silent grep!' grep_term | copen
+  "   else
+  "     echo "Empty search term"
+  "   endif
+  "   redraw!
+  " endfunction
+  " command! Search call MySearch()
+  " nnoremap \ :Search<CR>
+
+  " augroup global_search
+  "   autocmd!
+  "   autocmd Filetype * if &ft!="git"|nnoremap K "ayiw \<C-r>a<CR>|endif
+  "   autocmd Filetype * if &ft!="git"|vnoremap K "ay \'<C-r>a'<CR>|endif
+  " augroup end
+endif
+
+" --------------------
 " Basic configurations
 " --------------------
 set mouse=a                         " Enable mouse support
@@ -117,7 +142,7 @@ set hidden
 set noswapfile                      " Don't create swap file
 set nobackup                        " Don't create backup files
 " set diffopt=vertical
-set diffopt+=vertical
+" set diffopt+=vertical
 set clipboard=unnamed               " Yank to system clipboard
 set noerrorbells                    " Turn off the bell
 set backspace=indent,eol,start      " allow backspacing over everything
@@ -202,7 +227,7 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ " Whitespace is needed
 set number                          " enable line number
-set relativenumber                  " enable relative line number
+" set relativenumber                  " enable relative line number
 " set cursorline                      " highlight cursor line
 set history=500
 set list                            " show spaces and tabs
@@ -231,7 +256,7 @@ set wrap                            " wrap line when lines are longer than the w
 " Visual display
 " --------------------
 " syntax sync minlines=256
-" set background=dark
+set background=light
 let g:PaperColor_Theme_Options = {
       \   'theme': {
       \     'default': {
